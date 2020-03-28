@@ -17,7 +17,15 @@ const mappedDocumentationEntries = Object.entries(sidebarContent.docs).map(
   ([categoryName, categoryEntries]) => ({
     type: 'category',
     label: categoryName,
-    items: categoryEntries.map((entry) => `${apiDocPrefix}${projectName}/${entry}`),
+    items: categoryEntries.map((entry) => {
+      const prefix = `${apiDocPrefix}${projectName}/`;
+
+      if (entry.startsWith(prefix)) {
+        return entry;
+      } else {
+        return `${prefix}${entry}`;
+      }
+    }),
   })
 );
 
