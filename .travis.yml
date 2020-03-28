@@ -6,14 +6,19 @@ cache:
 
 jobs:
   include:
+    - stage: Build
+      name: 'Rollup build'
+      script: 'yarn build'
     - stage: Test
       name: 'Linting'
       script: 'yarn lint'
     - script: yarn test:coverage && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage
       name: 'Produce coverage'
-    - stage: Build
-      name: 'Rollup build'
-      script: 'yarn build'
+    - stage: Website
+      name: 'Build website'
+      script: 'yarn build:docs'
+    - script: 'yarn deploy:docs'
+      name: 'Deploy website'
       deploy:
         provider: npm
         email: $NPM_DEPLOY_EMAIL

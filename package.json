@@ -7,8 +7,9 @@
     "test": "jest",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
-    "start:docs": "cd website && yarn start:docs",
-    "build:docs": "cd website && yarn build:docs",
+    "start:docs": "lerna run start:docs --stream",
+    "build:docs": "lerna run build:docs --stream",
+    "deploy:docs": "lerna run deploy:docs --stream",
     "lint": "eslint \"packages/**/src/**\""
   },
   "devDependencies": {
