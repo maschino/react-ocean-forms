@@ -1,6 +1,6 @@
 import typescript from 'rollup-plugin-typescript2';
-import nodeResolve from 'rollup-plugin-node-resolve';
-import commonjs from 'rollup-plugin-commonjs';
+import nodeResolve from '@rollup/plugin-node-resolve';
+import commonjs from '@rollup/plugin-commonjs';
 import filesize from 'rollup-plugin-filesize';
 import sass from 'rollup-plugin-sass';
 
@@ -10,23 +10,25 @@ const packageJson = require(path.resolve(basePath, './package.json'));
 
 const externalDependencies = [
   ...Object.keys(packageJson.dependencies || {}),
-  ...Object.keys(packageJson.peerDependencies || {})
+  ...Object.keys(packageJson.peerDependencies || {}),
 ];
 
 const getBaseConfig = (showFilesize = false, noTsDeclaration = false) => {
-  const tsconfigOverride = noTsDeclaration ? {
-    compilerOptions: {
-      declaration: false,
-      declarationMap: false
-    }
-  } : undefined;
+  const tsconfigOverride = noTsDeclaration
+    ? {
+        compilerOptions: {
+          declaration: false,
+          declarationMap: false,
+        },
+      }
+    : undefined;
 
   return {
-    input: "src/index.ts",
+    input: 'src/index.ts',
     plugins: [
       nodeResolve({
         preferBuiltins: true,
-        browser: true
+        browser: true,
       }),
       typescript({
         clean: false,
@@ -35,9 +37,7 @@ const getBaseConfig = (showFilesize = false, noTsDeclaration = false) => {
       }),
       commonjs({
         namedExports: {
-          'moment': [
-            'locale',
-          ],
+          moment: ['locale'],
         },
       }),
       sass({
@@ -46,7 +46,7 @@ const getBaseConfig = (showFilesize = false, noTsDeclaration = false) => {
       showFilesize ? filesize() : null,
     ],
     external: (id) => {
-      return externalDependencies.some(dep => id.indexOf(dep) === 0);
+      return externalDependencies.some((dep) => id.indexOf(dep) === 0);
     },
   };
 };
@@ -56,8 +56,8 @@ export default (commands) => {
     ...getBaseConfig(true),
     output: {
       file: packageJson.main,
-      format: "cjs",
-      exports: "named",
+      format: 'cjs',
+      exports: 'named',
       sourcemap: true,
     },
   };
@@ -66,20 +66,15 @@ export default (commands) => {
     ...getBaseConfig(false, true),
     output: {
       file: packageJson.module,
-      format: "es",
-      exports: "named",
+      format: 'es',
+      exports: 'named',
       sourcemap: true,
-    }
+    },
   };
 
   if (commands.watch === true) {
-    return [
-      esConfig,
-    ];
+    return [esConfig];
   } else {
-    return [
-      cjsConfig,
-      esConfig,
-    ];
+    return [cjsConfig, esConfig];
   }
 };
