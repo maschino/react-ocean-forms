@@ -38,19 +38,19 @@ jobs:
     - name: Install dependencies
       run: yarn install --frozen-lockfile
       
-    #- name: Build project
-    #  run: yarn build
+    - name: Build project
+      run: yarn build
         
-    #- name: Lint
-    #  run: yarn lint
+    - name: Lint
+      run: yarn lint
       
-    #- name: Test
-    #  run: yarn test:coverage
+    - name: Test
+      run: yarn test:coverage
       
-    #- name: Report Test Coverage
-    #  uses: coverallsapp/github-action@v1.0.1
-    #  with:
-    #    github-token: ${{ secrets.GITHUB_TOKEN }}
+    - name: Report Test Coverage
+      uses: coverallsapp/github-action@v1.0.1
+      with:
+        github-token: ${{ secrets.GITHUB_TOKEN }}
       
     - name: Publish documentation
       run: |
