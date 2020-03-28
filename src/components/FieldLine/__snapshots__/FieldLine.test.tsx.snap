@@ -1,0 +1,99 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<FieldLine /> should render correctly 1`] = `
+<FieldRow
+  meta={
+    Object {
+      "error": null,
+      "isRequired": false,
+      "isValidating": false,
+      "plaintext": false,
+      "stringFormatter": [MockFunction],
+      "touched": false,
+      "valid": true,
+    }
+  }
+>
+  <Label
+    className="text-right"
+    for="mock-field"
+    sm="3"
+    tag="label"
+    widths={
+      Array [
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl",
+      ]
+    }
+  >
+    <InvalidAlert
+      valid={true}
+    />
+    <ValidatingSpinner
+      isValidating={false}
+    />
+    <FormText
+      text="label"
+    />
+    <RequiredMarker
+      meta={
+        Object {
+          "error": null,
+          "isRequired": false,
+          "isValidating": false,
+          "plaintext": false,
+          "stringFormatter": [MockFunction],
+          "touched": false,
+          "valid": true,
+        }
+      }
+    />
+  </Label>
+  <Col
+    sm="9"
+    tag="div"
+    widths={
+      Array [
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl",
+      ]
+    }
+  >
+    <InputGroup
+      tag="div"
+    >
+      <FieldLineAddon
+        plaintext={false}
+        type="prepend"
+      />
+      <div
+        id="mock-child"
+      />
+      <FieldLineAddon
+        plaintext={false}
+        type="append"
+      />
+      <InfoAddonButton
+        onClick={[Function]}
+        plaintext={false}
+      />
+      <FieldError
+        error={null}
+        id="mock-field_errors"
+        invalid={false}
+      />
+    </InputGroup>
+    <InfoAlert
+      onClose={[Function]}
+      plaintext={false}
+      visible={false}
+    />
+  </Col>
+</FieldRow>
+`;

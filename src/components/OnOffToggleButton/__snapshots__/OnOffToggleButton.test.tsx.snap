@@ -1,0 +1,215 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<BaseOnOffToggleButton /> should render correctly in disabled mode 1`] = `
+<FieldLine
+  field={
+    Object {
+      "disabled": true,
+      "id": "mock-field",
+      "name": "mock-field",
+      "onBlur": [MockFunction],
+      "onChange": [MockFunction],
+      "value": "mock-value",
+    }
+  }
+  inputSize="9"
+  label="field0"
+  labelClass="text-right"
+  labelSize="3"
+  meta={
+    Object {
+      "error": null,
+      "isRequired": false,
+      "isValidating": false,
+      "plaintext": false,
+      "stringFormatter": [MockFunction],
+      "touched": false,
+      "valid": true,
+    }
+  }
+  offLabel="off"
+  onLabel="on"
+>
+  <ButtonGroup
+    id="mock-field"
+    role="group"
+    tag="div"
+  >
+    <Button
+      active={true}
+      color="primary"
+      disabled={true}
+      id="mock-field-on"
+      onClick={[Function]}
+      outline={true}
+      tag="button"
+    >
+      <FormText
+        text="on"
+      />
+    </Button>
+    <Button
+      active={false}
+      color="primary"
+      disabled={true}
+      id="mock-field-off"
+      onClick={[Function]}
+      outline={true}
+      tag="button"
+    >
+      <FormText
+        text="off"
+      />
+    </Button>
+  </ButtonGroup>
+</FieldLine>
+`;
+
+exports[`<BaseOnOffToggleButton /> should render plaintext Button 1`] = `
+<Input
+  field={
+    Object {
+      "disabled": false,
+      "id": "mock-field",
+      "name": "mock-field",
+      "onBlur": [MockFunction],
+      "onChange": [MockFunction],
+      "value": "on",
+    }
+  }
+  label="field0"
+  meta={
+    Object {
+      "error": null,
+      "isRequired": false,
+      "isValidating": false,
+      "plaintext": true,
+      "stringFormatter": [MockFunction] {
+        "calls": Array [
+          Array [
+            "on",
+          ],
+        ],
+        "results": Array [
+          Object {
+            "type": "return",
+            "value": "on",
+          },
+        ],
+      },
+      "touched": false,
+      "valid": true,
+    }
+  }
+  offLabel="off"
+  onLabel="on"
+  type="text"
+/>
+`;
+
+exports[`<BaseOnOffToggleButton /> should render the correct label in plaintext mode 1`] = `
+<Input
+  field={
+    Object {
+      "disabled": false,
+      "id": "mock-field",
+      "name": "mock-field",
+      "onBlur": [MockFunction],
+      "onChange": [MockFunction],
+      "value": "off",
+    }
+  }
+  label="field0"
+  meta={
+    Object {
+      "error": null,
+      "isRequired": false,
+      "isValidating": false,
+      "plaintext": true,
+      "stringFormatter": [MockFunction] {
+        "calls": Array [
+          Array [
+            "off",
+          ],
+        ],
+        "results": Array [
+          Object {
+            "type": "return",
+            "value": "off",
+          },
+        ],
+      },
+      "touched": false,
+      "valid": true,
+    }
+  }
+  offLabel="off"
+  onLabel="on"
+  type="text"
+/>
+`;
+
+exports[`<BaseOnOffToggleButton /> should render without crashing 1`] = `
+<FieldLine
+  field={
+    Object {
+      "disabled": false,
+      "id": "mock-field",
+      "name": "mock-field",
+      "onBlur": [MockFunction],
+      "onChange": [MockFunction],
+      "value": "mock-value",
+    }
+  }
+  inputSize="9"
+  label="field0"
+  labelClass="text-right"
+  labelSize="3"
+  meta={
+    Object {
+      "error": null,
+      "isRequired": false,
+      "isValidating": false,
+      "plaintext": false,
+      "stringFormatter": [MockFunction],
+      "touched": false,
+      "valid": true,
+    }
+  }
+  offLabel="off"
+  onLabel="on"
+>
+  <ButtonGroup
+    id="mock-field"
+    role="group"
+    tag="div"
+  >
+    <Button
+      active={true}
+      color="primary"
+      disabled={false}
+      id="mock-field-on"
+      onClick={[Function]}
+      outline={true}
+      tag="button"
+    >
+      <FormText
+        text="on"
+      />
+    </Button>
+    <Button
+      active={false}
+      color="primary"
+      disabled={false}
+      id="mock-field-off"
+      onClick={[Function]}
+      outline={true}
+      tag="button"
+    >
+      <FormText
+        text="off"
+      />
+    </Button>
+  </ButtonGroup>
+</FieldLine>
+`;

@@ -1,0 +1,98 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Check /> should render correctly 1`] = `
+<FieldRow
+  meta={
+    Object {
+      "error": null,
+      "isRequired": false,
+      "isValidating": false,
+      "plaintext": false,
+      "stringFormatter": [MockFunction],
+      "touched": false,
+      "valid": true,
+    }
+  }
+>
+  <Col
+    className="text-right check-label-col"
+    sm={3}
+    tag="div"
+    widths={
+      Array [
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl",
+      ]
+    }
+  >
+    <InvalidAlert
+      valid={true}
+    />
+    <ValidatingSpinner
+      isValidating={false}
+    />
+  </Col>
+  <Col
+    sm={9}
+    tag="div"
+    widths={
+      Array [
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl",
+      ]
+    }
+  >
+    <InputGroup
+      tag="div"
+    >
+      <Label
+        check={true}
+        tag="label"
+        widths={
+          Array [
+            "xs",
+            "sm",
+            "md",
+            "lg",
+            "xl",
+          ]
+        }
+      >
+        <Input
+          checked={false}
+          disabled={false}
+          id="mock-field"
+          invalid={false}
+          name="mock-field"
+          onBlur={[MockFunction]}
+          onClick={[Function]}
+          type="checkbox"
+        />
+        <FormText
+          text="field0"
+        />
+        <FieldError
+          error={null}
+          id="mock-field_errors"
+          invalid={false}
+        />
+      </Label>
+      <InfoAddonButton
+        onClick={[Function]}
+        plaintext={false}
+      />
+    </InputGroup>
+    <InfoAlert
+      onClose={[Function]}
+      plaintext={false}
+      visible={false}
+    />
+  </Col>
+</FieldRow>
+`;
