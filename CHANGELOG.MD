@@ -1,6 +1,10 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [Unreleased]
+- Updated to `react-ocean-forms` 3.0.0
+- Added `containerClass` prop to `FieldLine` and thus to all input components
+
 ## [3.2.1] # 2020-02-07
 - Fixed `FieldLine` prefix and suffix typings
 - Fixed html id generation in `Select`
