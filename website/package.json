@@ -13,7 +13,10 @@
     "@docusaurus/preset-classic": "^2.0.0-alpha.48",
     "classnames": "^2.2.6",
     "react": "^16.8.4",
-    "react-dom": "^16.8.4"
+    "react-dom": "^16.8.4",
+    "react-ocean-forms": "3.0.0-rc.1",
+    "react-ocean-forms-bootstrap": "4.0.0-alpha.1",
+    "react-ocean-forms-react-intl": "3.0.0-rc.1"
   },
   "browserslist": {
     "production": [

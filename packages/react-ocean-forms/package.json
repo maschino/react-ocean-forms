@@ -10,7 +10,8 @@
   "scripts": {
     "start": "rollup -c -w",
     "build": "rollup -c",
-    "build:typedocs": "typedoc"
+    "build:docs": "typedoc && node ../../scripts/updateApiDoc.js",
+    "deploy:docs": "typedoc && node ../../scripts/updateApiDoc.js"
   },
   "peerDependencies": {
     "react": "^16.8.0"
