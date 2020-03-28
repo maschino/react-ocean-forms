@@ -21,6 +21,9 @@ const mappedDocumentationEntries = Object.entries(sidebarContent.docs).map(
   })
 );
 
+console.log('sidebar content at', sidebarLocation, sidebarContent);
+console.log('mapped entries at', resultLocation, mappedDocumentationEntries);
+
 if (fs.existsSync(resultLocation)) {
   console.log('Removing existing generated sidebar file');
   fs.unlinkSync(resultLocation);
