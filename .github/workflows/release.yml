@@ -41,3 +41,14 @@ jobs:
       
     - name: Test
       run: yarn test:coverage
+      
+    - name: Report Test Coverage
+      uses: coverallsapp/github-action@v1.0.1
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        
+    - name: Build documentation
+      run: yarn build:docs
+      
+    - name: Publish documentation
+      run: yarn deploy:docs
