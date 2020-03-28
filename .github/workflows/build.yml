@@ -1,0 +1,56 @@
+name: Build
+
+on:
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      CI: true
+
+    steps:
+    - uses: actions/checkout@v2   
+         
+    - uses: actions/setup-node@v1.1.0
+      with:
+        version: 12.x
+        
+    - name: Print information
+      run: |
+        node --version
+        npm --version
+        yarn --version
+        
+    - name: Get yarn cache directory path
+      id: yarn-cache-dir-path
+      run: echo "::set-output name=dir::$(yarn cache dir)"
+        
+    - uses: actions/cache@v1.1.2
+      id: yarn-cache
+      with:
+        path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
+        key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+        restore-keys: |
+          ${{ runner.os }}-yarn-
+        
+    - name: Install dependencies
+      run: yarn install --frozen-lockfile
+      
+    - name: Build project
+      run: yarn build
+        
+    - name: Lint
+      run: yarn lint
+      
+    - name: Test
+      run: yarn test:coverage
+      
+    - name: Report Test Coverage
+      uses: coverallsapp/github-action@v1.0.1
+      with:
+        github-token: ${{ secrets.GITHUB_TOKEN }}
+      
+    - name: Build documentation
+      run: yarn build:docs
