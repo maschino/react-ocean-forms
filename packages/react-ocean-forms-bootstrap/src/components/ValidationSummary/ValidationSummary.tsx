@@ -26,30 +26,29 @@ const renderSummary = (children: JSX.Element): JSX.Element => {
  * lives in.
  */
 export const ValidationSummary: React.FC<IValidationSummaryProps> = (props) => {
-  const renderFieldError = useCallback((
-    id: string,
-    fieldName: string,
-    errors: React.ReactNode,
-    linkCallback: React.MouseEventHandler,
-  ): JSX.Element => {
-    const { fieldErrorComponent: FieldErrorComponent = ValidationFieldError } = props;
+  const renderFieldError = useCallback(
+    (
+      id: string,
+      fieldName: string,
+      errors: React.ReactNode,
+      linkCallback: React.MouseEventHandler
+    ): JSX.Element => {
+      const { fieldErrorComponent: FieldErrorComponent = ValidationFieldError } = props;
 
-    return (
-      <FieldErrorComponent
-        id={id}
-        key={id}
-        fieldName={fieldName}
-        errors={errors}
-        linkCallback={linkCallback}
-      />
-    );
-  }, [props]);
+      return (
+        <FieldErrorComponent
+          id={id}
+          key={id}
+          fieldName={fieldName}
+          errors={errors}
+          linkCallback={linkCallback}
+        />
+      );
+    },
+    [props]
+  );
 
   return (
-    <CoreValidationSummary
-      {...props}
-      renderFieldError={renderFieldError}
-      render={renderSummary}
-    />
+    <CoreValidationSummary {...props} renderFieldError={renderFieldError} render={renderSummary} />
   );
 };

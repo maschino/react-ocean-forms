@@ -3,9 +3,14 @@ import * as FormComponents from './index';
 describe('Index', () => {
   describe('Component exports', () => {
     const components = [
-      'Check', 'DatePicker', 'FieldLine',
-      'FormButton', 'Input', 'OnOffToggleButton',
-      'Select', 'ValidationSummary',
+      'Check',
+      'DatePicker',
+      'FieldLine',
+      'FormButton',
+      'Input',
+      'OnOffToggleButton',
+      'Select',
+      'ValidationSummary',
     ];
 
     components.forEach((component) => {

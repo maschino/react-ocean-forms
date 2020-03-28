@@ -16,22 +16,14 @@ import { IInfoAlertProps } from './InfoAlert.types';
  * info message
  */
 export const InfoAlert: React.FC<IInfoAlertProps> = (props) => {
-  const {
-    visible,
-    info,
-    plaintext,
-    onClose,
-  } = props;
+  const { visible, info, plaintext, onClose } = props;
 
-  if (plaintext || info === undefined) { return null; }
+  if (plaintext || info === undefined) {
+    return null;
+  }
 
   return (
-    <Alert
-      color="success"
-      className="mt-2"
-      isOpen={visible}
-      toggle={onClose}
-    >
+    <Alert color="success" className="mt-2" isOpen={visible} toggle={onClose}>
       <FormText text={info} />
     </Alert>
   );

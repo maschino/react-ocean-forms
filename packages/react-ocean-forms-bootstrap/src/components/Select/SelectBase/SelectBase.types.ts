@@ -25,7 +25,11 @@ export interface ISelectOption {
 }
 
 export function isSelectOption(object: any): object is ISelectOption {
-  return object && typeof (object as ISelectOption).label === 'string' && typeof (object as ISelectOption).value === 'string';
+  return (
+    object &&
+    typeof (object as ISelectOption).label === 'string' &&
+    typeof (object as ISelectOption).value === 'string'
+  );
 }
 
 /**
@@ -78,11 +82,10 @@ interface IMappedReactSelectProps {
   handleChange?(value: ISelectFieldValue, action?: ActionMeta): void;
 }
 
-export interface ISelectBasePropsBase<TSubmitValue> extends
-  IUseFieldProps<ISelectFieldValue, TSubmitValue>,
-  IBaseFieldLineProps,
-  IMappedReactSelectProps {
-}
+export interface ISelectBasePropsBase<TSubmitValue>
+  extends IUseFieldProps<ISelectFieldValue, TSubmitValue>,
+    IBaseFieldLineProps,
+    IMappedReactSelectProps {}
 
 /**
  * The props that are prepared by the `SelectBase` component
@@ -98,6 +101,9 @@ export interface ISelectBaseProps<TSubmitValue> extends ISelectBasePropsBase<TSu
    * Callback to render the actual select component with `preparedProps`
    * @param preparedProps The prepared props for the select
    */
-  renderSelect(preparedProps: IPreparedSelectProps, fieldProps: IFieldComponentFieldProps<ISelectFieldValue>): JSX.Element;
+  renderSelect(
+    preparedProps: IPreparedSelectProps,
+    fieldProps: IFieldComponentFieldProps<ISelectFieldValue>
+  ): JSX.Element;
   handleChange?(value: ISelectFieldValue, action?: ActionMeta): void;
 }

@@ -18,10 +18,7 @@ export const ValidationFieldError: React.FC<IValidationFieldErrorProps> = (props
     <li key={id}>
       <FontAwesomeIcon icon={faExclamationCircle} className="mr-2" />
       <a href={`#${id}`} onClick={linkCallback}>
-        {fieldName}
-        :
-        {' '}
-        {errors}
+        {fieldName}: {errors}
       </a>
     </li>
   );

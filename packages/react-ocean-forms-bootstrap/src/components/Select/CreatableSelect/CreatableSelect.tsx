@@ -15,7 +15,9 @@ import { ICreatableSelectProps } from './CreatableSelect.types';
 /**
  * Component to display a select that can create options
  */
-export const CreatableSelect = <TSubmitValue extends unknown = ISelectFieldValue>(props: ICreatableSelectProps<TSubmitValue>): JSX.Element => {
+export const CreatableSelect = <TSubmitValue extends unknown = ISelectFieldValue>(
+  props: ICreatableSelectProps<TSubmitValue>
+): JSX.Element => {
   const {
     createPrefixLabel = 'ojs_select_creatable_prefix',
     handleChange,
@@ -29,50 +31,61 @@ export const CreatableSelect = <TSubmitValue extends unknown = ISelectFieldValue
   /**
    * Formats the text that is shown for the create label
    */
-  const formatCreateLabel = useCallback((text: string): React.ReactNode => {
-    const promptText = stringFormatter(createPrefixLabel);
+  const formatCreateLabel = useCallback(
+    (text: string): React.ReactNode => {
+      const promptText = stringFormatter(createPrefixLabel);
 
-    return `${promptText} '${text}'`;
-  }, [createPrefixLabel, stringFormatter]);
+      return `${promptText} '${text}'`;
+    },
+    [createPrefixLabel, stringFormatter]
+  );
 
-  const handleCreateOption = useCallback(async (fieldProps: IFieldComponentFieldProps<ISelectFieldValue>, value: string): Promise<void> => {
-    setLoading(true);
+  const handleCreateOption = useCallback(
+    async (
+      fieldProps: IFieldComponentFieldProps<ISelectFieldValue>,
+      value: string
+    ): Promise<void> => {
+      setLoading(true);
 
-    const result = onCreateOption ? await onCreateOption(value) : undefined;
-    if (!result) {
-      return;
-    }
+      const result = onCreateOption ? await onCreateOption(value) : undefined;
+      if (!result) {
+        return;
+      }
 
-    fieldProps.onChange({
-      target: {
-        value: [...Array.isArray(fieldProps.value) ? fieldProps.value : [], result],
-      },
-    });
-    setLoading(false);
-  }, [onCreateOption]);
+      fieldProps.onChange({
+        target: {
+          value: [...(Array.isArray(fieldProps.value) ? fieldProps.value : []), result],
+        },
+      });
+      setLoading(false);
+    },
+    [onCreateOption]
+  );
 
   /**
    * Renders the actual `Select` component with the passed props
    */
-  const renderSelect = useCallback((preparedProps: IPreparedSelectProps, fieldProps: IFieldComponentFieldProps<ISelectFieldValue>): JSX.Element => {
-    // onChange will not be called if onCreateOption is defined
-    const createOption = onCreateOption ? handleCreateOption.bind(null, fieldProps) : undefined;
+  const renderSelect = useCallback(
+    (
+      preparedProps: IPreparedSelectProps,
+      fieldProps: IFieldComponentFieldProps<ISelectFieldValue>
+    ): JSX.Element => {
+      // onChange will not be called if onCreateOption is defined
+      const createOption = onCreateOption ? handleCreateOption.bind(null, fieldProps) : undefined;
 
-    return (
-      <Creatable
-        {...preparedProps}
-        isLoading={loading}
-        formatCreateLabel={formatCreateLabel}
-        onCreateOption={createOption}
-      />
-    );
-  }, [formatCreateLabel, handleCreateOption, loading, onCreateOption]);
+      return (
+        <Creatable
+          {...preparedProps}
+          isLoading={loading}
+          formatCreateLabel={formatCreateLabel}
+          onCreateOption={createOption}
+        />
+      );
+    },
+    [formatCreateLabel, handleCreateOption, loading, onCreateOption]
+  );
 
   return (
-    <SelectBase
-      {...selectBaseProps}
-      handleChange={handleChange}
-      renderSelect={renderSelect}
-    />
+    <SelectBase {...selectBaseProps} handleChange={handleChange} renderSelect={renderSelect} />
   );
 };

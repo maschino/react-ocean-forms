@@ -1,4 +1,5 @@
 # react-ocean-forms-bootstrap
+
 [![npm](https://img.shields.io/npm/v/react-ocean-forms-bootstrap.svg)](https://www.npmjs.com/package/react-ocean-forms-bootstrap)
 [![GitHub license](https://img.shields.io/github/license/environment-agency-austria/react-ocean-forms-bootstrap.svg)](https://github.com/environment-agency-austria/react-ocean-forms-bootstrap/blob/master/LICENSE)
 [![travis](https://travis-ci.com/environment-agency-austria/react-ocean-forms-bootstrap.svg?branch=master)](https://travis-ci.com/environment-agency-austria/react-ocean-forms-bootstrap)
@@ -10,15 +11,18 @@ Bootstrap input components for [react-ocean-forms](https://github.com/environmen
 [API Documentation and Showcase](https://environment-agency-austria.github.io/forms-showcase/#/)
 
 ## Features
-* Multiple input types out of the box
-* Easy usage including eGOV SG 3.0 compliance
+
+- Multiple input types out of the box
+- Easy usage including eGOV SG 3.0 compliance
 
 ## Install
-```npm install react-ocean-forms-bootstrap```
 
-```yarn add react-ocean-forms-bootstrap```
+`npm install react-ocean-forms-bootstrap`
+
+`yarn add react-ocean-forms-bootstrap`
 
 ## Usage
+
 To use the components you need a `react-ocean-forms` Form. Then you can simply
 use the components inside of a Form.
 
@@ -33,19 +37,17 @@ Then use the components where needed.
 <Form
   onSubmit={this.handleSubmit}
   onValidate={this.handleValidate}
-  defaultValues={{ name: 'test'}}
+  defaultValues={{ name: 'test' }}
   asyncValidateOnChange
 >
   <ValidationSummary />
 
-  <Input
-    name="name"
-    label="demo_name"
-  />
+  <Input name="name" label="demo_name" />
 
   <button type="submit">Submit</button>
 </Form>
 ```
 
 ## Documentation and Showcase
+
 [API Documentation and Showcase](https://environment-agency-austria.github.io/forms-showcase/#/)

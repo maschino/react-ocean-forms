@@ -21,13 +21,11 @@ export const InvalidAlert: React.FC<IInvalidAlertProps> = (props) => {
 
   const invalidTitle = useFormText('ojs_field_invalid');
 
-  if (valid) { return null; }
+  if (valid) {
+    return null;
+  }
 
   return (
-    <FontAwesomeIcon
-      icon={faExclamationCircle}
-      className="ico-invalid mr-2"
-      title={invalidTitle}
-    />
+    <FontAwesomeIcon icon={faExclamationCircle} className="ico-invalid mr-2" title={invalidTitle} />
   );
 };

@@ -16,25 +16,18 @@ import { ISelectProps } from './Select.types';
  * Renders the actual `Select` component with the passed props
  */
 const renderSelect = (preparedProps: IPreparedSelectProps): JSX.Element => {
-  return (
-    <ReactSelect {...preparedProps} />
-  );
-}
+  return <ReactSelect {...preparedProps} />;
+};
 
 /**
  * Component for displaying bootstrap
  * form groups with an select input and
  * oForm support
  */
-export const Select = <TSubmitValue extends unknown = ISelectFieldValue>(props: ISelectProps<TSubmitValue>): JSX.Element => {
-  const {
-    ...selectBaseProps
-  } = props;
+export const Select = <TSubmitValue extends unknown = ISelectFieldValue>(
+  props: ISelectProps<TSubmitValue>
+): JSX.Element => {
+  const { ...selectBaseProps } = props;
 
-  return (
-    <SelectBase
-      {...selectBaseProps}
-      renderSelect={renderSelect}
-    />
-  );
+  return <SelectBase {...selectBaseProps} renderSelect={renderSelect} />;
 };

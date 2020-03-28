@@ -1,8 +1,8 @@
 {
   /*
-    * This is the overall configuration for typescript.
-    * It is mainly used by vscode and other configurations.
-    */
+   * This is the overall configuration for typescript.
+   * It is mainly used by vscode and other configurations.
+   */
   "compilerOptions": {
     // Output stuff
     "outDir": "build",
@@ -10,10 +10,7 @@
     "declaration": false,
     "sourceMap": false,
     // Which libraries should be included
-    "lib": [
-      "es5",
-      "dom",
-    ],
+    "lib": ["es5", "dom"],
     "target": "es5",
     "moduleResolution": "node",
     // Some style guidelines
@@ -27,6 +24,6 @@
     "checkJs": false,
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
-    "strict": true,
+    "strict": true
   }
 }

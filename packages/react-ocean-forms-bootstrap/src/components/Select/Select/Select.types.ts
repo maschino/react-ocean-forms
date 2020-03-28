@@ -9,5 +9,4 @@ import { ISelectBasePropsBase } from '../SelectBase';
 /**
  * Props for the component `Select`
  */
-export interface ISelectProps<TSubmitValue> extends ISelectBasePropsBase<TSubmitValue> {
-}
+export interface ISelectProps<TSubmitValue> extends ISelectBasePropsBase<TSubmitValue> {}

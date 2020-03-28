@@ -87,16 +87,13 @@ describe('<CreatableSelect />', () => {
 
   it('should render a select-base', () => {
     // const { wrapper } = setup();
-
     // expect(wrapper.find(SelectBase).exists()).toBeTruthy();
   });
 
   it('should render a react-select Creatable', () => {
     // const { wrapper } = setup();
-
     // const i = exposePrivateMembers(wrapper.instance());
     // const result = shallow(i.renderSelect());
-
     // expect(result.exists()).toBe(true);
   });
 
@@ -108,7 +105,6 @@ describe('<CreatableSelect />', () => {
     // // The mocked result from the stringFormatter
     // const mockStringFormatterResult = 'mock-string-formatter-result';
     // const stringFormatter = jest.fn((): string => mockStringFormatterResult);
-
     // const { wrapper } = setup({
     //   metaOverrides: {
     //     stringFormatter,
@@ -117,17 +113,14 @@ describe('<CreatableSelect />', () => {
     //     createPrefixLabel: mockCreatePrefixLabel,
     //   },
     // });
-
     // const i = exposePrivateMembers(wrapper.instance());
     // const formatCreateLabelResult = i.formatCreateLabel(formatCreateLabelInput);
-
     // expect(stringFormatter).toBeCalledWith(mockCreatePrefixLabel);
     // expect(formatCreateLabelResult).toEqual(`${mockStringFormatterResult} '${formatCreateLabelInput}'`);
   });
   describe('onCreateOption', () => {
     it('should return undefined of onCreateOption', () => {
       // const createOptionProp = jest.fn().mockReturnValue(undefined);
-
       // const { wrapper } = setup({
       //   props: {
       //     onCreateOption: createOptionProp,
@@ -145,7 +138,6 @@ describe('<CreatableSelect />', () => {
       //   value: 'abc',
       //   label: 'abc',
       // });
-
       // const { wrapper } = setup({
       //   props: {
       //     onCreateOption: createOptionProp,
@@ -161,7 +153,6 @@ describe('<CreatableSelect />', () => {
       //   value: 'abc',
       //   label: 'abc',
       // });
-
       // const { field, wrapper } = setup({
       //   props: {
       //     onCreateOption: createOptionProp,

@@ -1,4 +1,5 @@
 # react-ocean-forms-react-intl
+
 [![npm](https://img.shields.io/npm/v/react-ocean-forms-react-intl.svg)](https://www.npmjs.com/package/react-ocean-forms-react-intl)
 [![GitHub license](https://img.shields.io/github/license/environment-agency-austria/react-ocean-forms-react-intl.svg)](https://github.com/environment-agency-austria/react-ocean-forms-react-intl/blob/master/LICENSE)
 [![travis](https://travis-ci.com/environment-agency-austria/react-ocean-forms-react-intl.svg?branch=master)](https://travis-ci.com/environment-agency-austria/react-ocean-forms-react-intl)
@@ -11,14 +12,17 @@ to enable `react-intl` support in the forms.
 [API Documentation and Showcase](https://environment-agency-austria.github.io/forms-showcase/#/)
 
 ## Features
-* Plug and play extension for multi-language support
+
+- Plug and play extension for multi-language support
 
 ## Install
-```npm install react-ocean-forms-react-intl```
 
-```yarn add react-ocean-forms-react-intl```
+`npm install react-ocean-forms-react-intl`
+
+`yarn add react-ocean-forms-react-intl`
 
 ## Usage
+
 Simply swap out any existing `Form` references with `IntlForm` from this package.
 
 ```js
@@ -29,10 +33,7 @@ Then replace the existing form tags.
 
 ```jsx
 <IntlForm onSubmit={this.handleSubmit}>
-  <Input
-    name="name"
-    label="demo_name"
-  />
+  <Input name="name" label="demo_name" />
 
   <button type="submit">Submit</button>
 </IntlForm>

@@ -41,7 +41,7 @@ export const FieldLine: React.FC<IFieldLineProps> = (props) => {
 
   const [infoVisible, setInfoVisible] = useState(false);
   const toggleInfo = useCallback(() => {
-    setInfoVisible(oldVisible => !oldVisible);
+    setInfoVisible((oldVisible) => !oldVisible);
   }, []);
 
   return (

@@ -5,7 +5,9 @@ import { IBaseFieldLineProps } from '../FieldLine';
 /**
  * Props for the OnOffToggleButton component
  */
-export interface IOnOffToggleButtonProps<TSubmitValue> extends IUseFieldProps<boolean, TSubmitValue>, IBaseFieldLineProps {
+export interface IOnOffToggleButtonProps<TSubmitValue>
+  extends IUseFieldProps<boolean, TSubmitValue>,
+    IBaseFieldLineProps {
   /**
    * Label for the on-button
    */

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { render, fireEvent, waitForElement } from '@testing-library/react'
+import { render, fireEvent, waitForElement } from '@testing-library/react';
 import { Form } from 'react-ocean-forms';
 
 import { Check } from './Check';

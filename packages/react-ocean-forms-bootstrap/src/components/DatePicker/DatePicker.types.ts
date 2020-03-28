@@ -12,7 +12,7 @@ export interface IBaseDatePickerProps {
 /**
  * Props for the DatePicker component
  */
-export interface IDatePickerProps<TSubmitValue> extends
-  IBaseDatePickerProps,
-  IUseFieldProps<moment.MomentInput, TSubmitValue>,
-  IBaseFieldLineProps { }
+export interface IDatePickerProps<TSubmitValue>
+  extends IBaseDatePickerProps,
+    IUseFieldProps<moment.MomentInput, TSubmitValue>,
+    IBaseFieldLineProps {}

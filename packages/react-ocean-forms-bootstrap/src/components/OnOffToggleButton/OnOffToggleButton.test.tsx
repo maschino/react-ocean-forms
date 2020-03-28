@@ -44,7 +44,13 @@ describe('<OnOffToggleButton />', () => {
     it('should render the correct label in plaintext mode', () => {
       const { getByDisplayValue, queryByDisplayValue, getByLabelText } = render(
         <Form plaintext>
-          <OnOffToggleButton name="mock" label="mock" onLabel="mock on label" offLabel="mock off label" value={false} />
+          <OnOffToggleButton
+            name="mock"
+            label="mock"
+            onLabel="mock on label"
+            offLabel="mock off label"
+            value={false}
+          />
         </Form>
       );
 
@@ -78,7 +84,13 @@ describe('<OnOffToggleButton />', () => {
       it('should set the correct button as active', () => {
         const { getByText } = render(
           <Form>
-            <OnOffToggleButton name="mock" label="mock" value={initialValue} onLabel="on" offLabel="off" />
+            <OnOffToggleButton
+              name="mock"
+              label="mock"
+              value={initialValue}
+              onLabel="on"
+              offLabel="off"
+            />
           </Form>
         );
 
@@ -93,7 +105,14 @@ describe('<OnOffToggleButton />', () => {
         const handleChange = jest.fn();
         const { getByText } = render(
           <Form>
-            <OnOffToggleButton name="mock" label="mock" value={initialValue} onLabel="on" offLabel="off" onChange={handleChange} />
+            <OnOffToggleButton
+              name="mock"
+              label="mock"
+              value={initialValue}
+              onLabel="on"
+              offLabel="off"
+              onChange={handleChange}
+            />
           </Form>
         );
 

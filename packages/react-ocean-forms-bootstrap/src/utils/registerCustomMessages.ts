@@ -18,7 +18,7 @@ export const registerCustomMessages = (): void => {
     ojs_togglebutton_off: 'Off',
     ojs_show_information: 'Show information',
     ojs_field_validating: 'Validating ...',
-    ojs_field_invalid: 'Validation failed'
+    ojs_field_invalid: 'Validation failed',
   };
   addCustomMessages(defaultMessages);
 };

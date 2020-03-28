@@ -18,11 +18,10 @@ import { IInputProps } from './Input.types';
  * form groups with an html input and
  * react-ocean-forms support
  */
-export const Input = <TSubmitValue extends unknown>(props: IInputProps<TSubmitValue>): JSX.Element => {
-  const {
-    type = 'text',
-    ...rest
-  } = props;
+export const Input = <TSubmitValue extends unknown>(
+  props: IInputProps<TSubmitValue>
+): JSX.Element => {
+  const { type = 'text', ...rest } = props;
 
   const { fieldProps, metaProps } = useField(rest);
 
@@ -31,7 +30,13 @@ export const Input = <TSubmitValue extends unknown>(props: IInputProps<TSubmitVa
 
   return (
     <FieldLine {...rest} fieldProps={fieldProps} metaProps={metaProps}>
-      <StrapInput type={type} {...fieldProps} value={defaultizedValue} invalid={invalid} plaintext={metaProps.plaintext} />
+      <StrapInput
+        type={type}
+        {...fieldProps}
+        value={defaultizedValue}
+        invalid={invalid}
+        plaintext={metaProps.plaintext}
+      />
     </FieldLine>
   );
 };

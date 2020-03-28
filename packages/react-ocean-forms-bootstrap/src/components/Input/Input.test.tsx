@@ -39,7 +39,7 @@ describe('<Input />', () => {
       </Form>
     );
 
-    fireEvent.change(getByLabelText('mock'), { target: { value: changedValue }});
+    fireEvent.change(getByLabelText('mock'), { target: { value: changedValue } });
     expect(handleChange).toHaveBeenCalledWith(changedValue);
 
     const input = await waitForElement(() => getByLabelText('mock'));
@@ -75,8 +75,8 @@ describe('<Input />', () => {
       </Form>
     );
 
-    fireEvent.change(getByLabelText('mock'), { target: { value: 'temp value' }});
-    fireEvent.change(getByLabelText('mock'), { target: { value: '' }});
+    fireEvent.change(getByLabelText('mock'), { target: { value: 'temp value' } });
+    fireEvent.change(getByLabelText('mock'), { target: { value: '' } });
 
     expect(getByRole('textbox')).toHaveClass('is-invalid');
     expect(getByText('This field is mandatory.')).toBeVisible();

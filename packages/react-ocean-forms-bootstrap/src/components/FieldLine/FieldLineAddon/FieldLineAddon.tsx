@@ -17,7 +17,9 @@ import { IFieldLineAddonProps } from './FieldLineAddon.types';
 export const FieldLineAddon: React.FC<IFieldLineAddonProps> = (props) => {
   const { plaintext, content, type } = props;
 
-  if (plaintext || content === undefined) { return null; }
+  if (plaintext || content === undefined) {
+    return null;
+  }
 
   let child = null;
   if (typeof content === 'string') {
@@ -30,9 +32,5 @@ export const FieldLineAddon: React.FC<IFieldLineAddonProps> = (props) => {
     child = content;
   }
 
-  return (
-    <InputGroupAddon addonType={type}>
-      {child}
-    </InputGroupAddon>
-  );
+  return <InputGroupAddon addonType={type}>{child}</InputGroupAddon>;
 };

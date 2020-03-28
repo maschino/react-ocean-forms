@@ -6,12 +6,7 @@ import { FormText } from 'react-ocean-forms';
 import { OnOffToggleButtonChoiceProps } from './OnOffToggleButtonChoice.types';
 
 export const OnOffToggleButtonChoice: React.FC<OnOffToggleButtonChoiceProps> = (props) => {
-  const {
-    fieldProps,
-    variant,
-    label,
-    onClick,
-  } = props;
+  const { fieldProps, variant, label, onClick } = props;
 
   const isOn = fieldProps.value ?? true;
   const active = (variant === 'on' && isOn) || (variant === 'off' && !isOn);
