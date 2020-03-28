@@ -38,24 +38,25 @@ jobs:
     - name: Install dependencies
       run: yarn install --frozen-lockfile
       
-    - name: Build project
-      run: yarn build
+    #- name: Build project
+    #  run: yarn build
         
-    - name: Lint
-      run: yarn lint
+    #- name: Lint
+    #  run: yarn lint
       
-    - name: Test
-      run: yarn test:coverage
+    #- name: Test
+    #  run: yarn test:coverage
       
-    - name: Report Test Coverage
-      uses: coverallsapp/github-action@v1.0.1
-      with:
-        github-token: ${{ secrets.GITHUB_TOKEN }}
-        
-    - name: Build documentation
-      run: yarn build:docs
+    #- name: Report Test Coverage
+    #  uses: coverallsapp/github-action@v1.0.1
+    #  with:
+    #    github-token: ${{ secrets.GITHUB_TOKEN }}
       
     - name: Publish documentation
-      run: yarn deploy:docs
+      run: |
+        git config --global user.email "react-ocean-forms-bot@users.noreply.github.com"
+        git config --global user.name "React Ocean Forms Bot" yarn deploy:docs
+        echo "machine github.com login maschino password ${{ secrets.GITHUB_PUSH_TOKEN }}" > ~/.netrc
+        yarn deploy:docs
       env:
         GIT_USER: maschino
