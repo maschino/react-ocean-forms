@@ -1,0 +1,23 @@
+language: node_js
+node_js:
+  - "lts/*"
+cache:
+  yarn: true
+
+jobs:
+  include:
+    - stage: Test
+      name: "Linting"
+      script: "yarn lint"
+    - script: jest --coverage && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage
+      name: "Produce coverage"
+    - stage: Build
+      name: "Rollup build"
+      script: "yarn build"
+      deploy:
+        provider: npm
+        email: $NPM_DEPLOY_EMAIL
+        api_key: $NPM_API_KEY
+        skip_cleanup: true
+        on:
+          tags: true

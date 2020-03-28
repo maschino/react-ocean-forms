@@ -1,0 +1,53 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<FieldLine /> should correctly set custom prop values 1`] = `
+<DocumentFragment>
+  <form
+    class=""
+  >
+    <div
+      class="custom container row form-group"
+    >
+      <label
+        class="custom col-sm-2 col-form-label"
+        for="mock"
+      >
+        mock
+      </label>
+      <div
+        class="col-sm-10"
+      >
+        <div
+          class="input-group"
+        />
+      </div>
+    </div>
+  </form>
+</DocumentFragment>
+`;
+
+exports[`<FieldLine /> should render correctly 1`] = `
+<DocumentFragment>
+  <form
+    class=""
+  >
+    <div
+      class="row form-group"
+    >
+      <label
+        class="text-right col-sm-3 col-form-label"
+        for="mock"
+      >
+        mock
+      </label>
+      <div
+        class="col-sm-9"
+      >
+        <div
+          class="input-group"
+        />
+      </div>
+    </div>
+  </form>
+</DocumentFragment>
+`;

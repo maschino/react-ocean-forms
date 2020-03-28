@@ -1,0 +1,69 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Input /> should react on meta.plaintext correctly 1`] = `
+<DocumentFragment>
+  <form
+    class=" plaintext"
+  >
+    <div
+      class="row form-group"
+    >
+      <label
+        class="text-right col-sm-3 col-form-label"
+        for="mock"
+      >
+        mock
+      </label>
+      <div
+        class="col-sm-9"
+      >
+        <div
+          class="input-group"
+        >
+          <input
+            class="form-control-plaintext"
+            id="mock"
+            name="mock"
+            type="text"
+            value=""
+          />
+        </div>
+      </div>
+    </div>
+  </form>
+</DocumentFragment>
+`;
+
+exports[`<Input /> should render correctly 1`] = `
+<DocumentFragment>
+  <form
+    class=""
+  >
+    <div
+      class="row form-group"
+    >
+      <label
+        class="text-right col-sm-3 col-form-label"
+        for="mock"
+      >
+        mock
+      </label>
+      <div
+        class="col-sm-9"
+      >
+        <div
+          class="input-group"
+        >
+          <input
+            class="form-control"
+            id="mock"
+            name="mock"
+            type="text"
+            value=""
+          />
+        </div>
+      </div>
+    </div>
+  </form>
+</DocumentFragment>
+`;

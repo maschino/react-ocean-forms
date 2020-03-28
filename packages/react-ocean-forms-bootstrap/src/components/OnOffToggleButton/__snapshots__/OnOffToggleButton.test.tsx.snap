@@ -1,0 +1,83 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<OnOffToggleButton /> plaintext mode should render plaintext Button 1`] = `
+<DocumentFragment>
+  <form
+    class=" plaintext"
+  >
+    <div
+      class="row form-group"
+    >
+      <label
+        class="text-right col-sm-3 col-form-label"
+        for="mock"
+      >
+        mock
+      </label>
+      <div
+        class="col-sm-9"
+      >
+        <div
+          class="input-group"
+        >
+          <input
+            class="form-control-plaintext"
+            id="mock"
+            name="mock"
+            readonly=""
+            type="text"
+            value="ojs_togglebutton_on"
+          />
+        </div>
+      </div>
+    </div>
+  </form>
+</DocumentFragment>
+`;
+
+exports[`<OnOffToggleButton /> should render correctly 1`] = `
+<DocumentFragment>
+  <form
+    class=""
+  >
+    <div
+      class="row form-group"
+    >
+      <label
+        class="text-right col-sm-3 col-form-label"
+        for="mock"
+      >
+        mock
+      </label>
+      <div
+        class="col-sm-9"
+      >
+        <div
+          class="input-group"
+        >
+          <div
+            class="btn-group"
+            id="mock"
+            role="group"
+          >
+            <button
+              class="btn btn-outline-primary active"
+              id="mock-on"
+              type="button"
+            >
+              ojs_togglebutton_on
+            </button>
+            <button
+              class="btn btn-outline-primary"
+              id="mock-off"
+              type="button"
+            >
+              ojs_togglebutton_off
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</DocumentFragment>
+`;
