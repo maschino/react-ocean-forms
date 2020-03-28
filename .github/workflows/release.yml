@@ -2,7 +2,7 @@ name: Release
 
 on:
   push:
-    branches: [ master ]
+    branches: [master]
 
 jobs:
   build:
@@ -11,52 +11,48 @@ jobs:
       CI: true
 
     steps:
-    - uses: actions/checkout@v2   
-         
-    - uses: actions/setup-node@v1.1.0
-      with:
-        version: 12.x
-        
-    - name: Print information
-      run: |
-        node --version
-        npm --version
-        yarn --version
-        
-    - name: Get yarn cache directory path
-      id: yarn-cache-dir-path
-      run: echo "::set-output name=dir::$(yarn cache dir)"
-        
-    - uses: actions/cache@v1.1.2
-      id: yarn-cache
-      with:
-        path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
-        key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
-        restore-keys: |
-          ${{ runner.os }}-yarn-
-        
-    - name: Install dependencies
-      run: yarn install --frozen-lockfile
-      
-    - name: Build project
-      run: yarn build
-        
-    - name: Lint
-      run: yarn lint
-      
-    - name: Test
-      run: yarn test:coverage
-      
-    - name: Report Test Coverage
-      uses: coverallsapp/github-action@v1.0.1
-      with:
-        github-token: ${{ secrets.GITHUB_TOKEN }}
-      
-    - name: Publish documentation
-      run: |
-        git config --global user.email "react-ocean-forms-bot@users.noreply.github.com"
-        git config --global user.name "React Ocean Forms Bot"
-        echo "machine github.com login maschino password ${{ secrets.GITHUB_PUSH_TOKEN }}" > ~/.netrc
-        yarn deploy:docs
-      env:
-        GIT_USER: maschino
+      - uses: actions/checkout@v2
+
+      - uses: actions/setup-node@v1.1.0
+        with:
+          version: 12.x
+
+      - name: Print information
+        run: |
+          node --version
+          npm --version
+          yarn --version
+
+      - uses: actions/cache@v1.1.2
+        id: yarn-cache
+        with:
+          path: |
+            node_modules
+            */*/node_modules
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+
+      - name: Build project
+        run: yarn build
+
+      - name: Lint
+        run: yarn lint
+
+      - name: Test
+        run: yarn test:coverage
+
+      - name: Report Test Coverage
+        uses: coverallsapp/github-action@v1.0.1
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Publish documentation
+        run: |
+          git config --global user.email "react-ocean-forms-bot@users.noreply.github.com"
+          git config --global user.name "React Ocean Forms Bot"
+          echo "machine github.com login maschino password ${{ secrets.GITHUB_PUSH_TOKEN }}" > ~/.netrc
+          yarn deploy:docs
+        env:
+          GIT_USER: maschino
