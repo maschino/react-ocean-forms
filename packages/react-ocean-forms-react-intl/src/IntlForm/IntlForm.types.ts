@@ -1,6 +1,6 @@
 /**
  * @packageDocumentation
- * @module FieldError
+ * @module IntlForm
  */
 
 import { InjectedIntlProps } from 'react-intl';
