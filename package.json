@@ -12,7 +12,14 @@
     "deploy:docs": "lerna run deploy:docs --stream",
     "lint": "eslint \"packages/**/src/**\""
   },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
   "devDependencies": {
+    "@commitlint/cli": "^8.3.5",
+    "@commitlint/config-conventional": "^8.3.4",
     "@rollup/plugin-commonjs": "^11.0.2",
     "@rollup/plugin-node-resolve": "^7.1.1",
     "@testing-library/jest-dom": "^5.3.0",
@@ -37,6 +44,7 @@
     "eslint-plugin-jsx-a11y": "^6.2.3",
     "eslint-plugin-react": "^7.19.0",
     "eslint-plugin-react-hooks": "^3.0.0",
+    "husky": "^4.2.3",
     "jest": "^25.2.3",
     "lerna": "^3.20.2",
     "prettier": "^2.0.2",

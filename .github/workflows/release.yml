@@ -59,3 +59,4 @@ jobs:
           yarn deploy:docs
         env:
           GIT_USER: maschino
+          CUSTOM_COMMIT_MESSAGE: 'docs: deploy website'
