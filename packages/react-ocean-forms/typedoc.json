@@ -1,10 +1,14 @@
 {
-  "out": "tmpdocs",
+  "out": "../../website/docs/api/react-ocean-forms",
   "excludeNotExported": true,
   "readme": "none",
   "module": "commonjs",
   "inputFiles": "src",
   "externalPattern": "node_modules",
+  "theme": "docusaurus2",
+  "hideSources": true,
+  "hideBreadcrumbs": true,
+  "hideIndexes": true,
   "exclude": [
     "**/*.test.ts",
     "**/*.test.tsx",

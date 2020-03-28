@@ -1,0 +1,22 @@
+{
+  "out": "../../website/docs/api/react-ocean-forms-react-intl",
+  "excludeNotExported": true,
+  "readme": "none",
+  "module": "commonjs",
+  "inputFiles": "src",
+  "externalPattern": "node_modules",
+  "theme": "docusaurus2",
+  "hideSources": true,
+  "hideBreadcrumbs": true,
+  "hideIndexes": true,
+  "exclude": [
+    "**/*.test.ts",
+    "**/*.test.tsx",
+    "**/*.test.js",
+    "**/*.test.jsx",
+    "config/**",
+    "src/test-utils/**",
+    "**/index.ts",
+    "src/hooks/internal/**"
+  ]
+}
