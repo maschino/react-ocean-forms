@@ -8,6 +8,7 @@ export * from './components';
 export {
   addCustomMessages,
   stringFormatter,
+  TSTringFormatter,
   parseValidationError,
   IMessageValues,
   PropsOf,
