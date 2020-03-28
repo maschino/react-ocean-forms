@@ -52,11 +52,11 @@ jobs:
     #  with:
     #    github-token: ${{ secrets.GITHUB_TOKEN }}
       
-    - name: Publish documentation
-      run: |
-        git config --global user.email "react-ocean-forms-bot@users.noreply.github.com"
-        git config --global user.name "React Ocean Forms Bot" yarn deploy:docs
-        echo "machine github.com login maschino password ${{ secrets.GITHUB_PUSH_TOKEN }}" > ~/.netrc
-        yarn deploy:docs
-      env:
-        GIT_USER: maschino
+    #- name: Publish documentation
+    #  run: |
+    #    git config --global user.email "react-ocean-forms-bot@users.noreply.github.com"
+    #    git config --global user.name "React Ocean Forms Bot"
+    #    echo "machine github.com login maschino password ${{ secrets.GITHUB_PUSH_TOKEN }}" > ~/.netrc
+    #    yarn deploy:docs
+    #  env:
+    #    GIT_USER: maschino
