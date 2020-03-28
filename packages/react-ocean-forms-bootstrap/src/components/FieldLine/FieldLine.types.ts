@@ -49,4 +49,4 @@ export interface IBaseFieldLineProps extends IInfoProps {
 /**
  * Props for the FieldLine component
  */
-export interface IFieldLineProps extends IUseFieldResult<unknown>, IBaseFieldLineProps { }
+export interface IFieldLineProps extends IUseFieldResult<unknown>, IBaseFieldLineProps {}

@@ -8,7 +8,7 @@
 import React, { useCallback } from 'react';
 
 import { useField } from 'react-ocean-forms';
-import {  ButtonGroup } from 'reactstrap';
+import { ButtonGroup } from 'reactstrap';
 
 import { FieldLine } from '../FieldLine';
 import { IOnOffToggleButtonProps } from './OnOffToggleButton.types';
@@ -20,23 +20,24 @@ import { OnOffToggleButtonChoice } from './OnOffToggleButtonChoice';
  * form groups with an html input and
  * oForm support
  */
-export const OnOffToggleButton = <TSubmitValue extends unknown = boolean>(props: IOnOffToggleButtonProps<TSubmitValue>): JSX.Element => {
-  const {
-    onLabel = 'ojs_togglebutton_on',
-    offLabel = 'ojs_togglebutton_off',
-    ...rest
-  } = props;
+export const OnOffToggleButton = <TSubmitValue extends unknown = boolean>(
+  props: IOnOffToggleButtonProps<TSubmitValue>
+): JSX.Element => {
+  const { onLabel = 'ojs_togglebutton_on', offLabel = 'ojs_togglebutton_off', ...rest } = props;
 
   const { fieldProps, metaProps } = useField(rest);
 
   const { onChange } = fieldProps;
-  const onRadioBtnClick = useCallback((value: boolean) => {
-    onChange({
-      target: {
-        value,
-      }
-    });
-  }, [onChange]);
+  const onRadioBtnClick = useCallback(
+    (value: boolean) => {
+      onChange({
+        target: {
+          value,
+        },
+      });
+    },
+    [onChange]
+  );
 
   if (metaProps.plaintext) {
     return (

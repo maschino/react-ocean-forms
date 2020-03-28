@@ -21,8 +21,12 @@ export const InfoAddonButton: React.FC<IInfoAddonButtonProps> = (props) => {
 
   const titleText = useFormText('ojs_show_information');
 
-  if (plaintext) { return null; }
-  if (info === undefined || info === '') { return null; }
+  if (plaintext) {
+    return null;
+  }
+  if (info === undefined || info === '') {
+    return null;
+  }
 
   return (
     <InputGroupAddon addonType="append">

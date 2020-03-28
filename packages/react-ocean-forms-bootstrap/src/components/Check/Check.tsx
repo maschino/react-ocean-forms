@@ -24,11 +24,10 @@ import { ICheckProps } from './Check.types';
  * form groups with an html checkbox and
  * react-ocean-forms support
  */
-export const Check = <TSubmitValue extends unknown = boolean>(props: ICheckProps<TSubmitValue>): JSX.Element => {
-  const {
-    className,
-    ...rest
-  } = props;
+export const Check = <TSubmitValue extends unknown = boolean>(
+  props: ICheckProps<TSubmitValue>
+): JSX.Element => {
+  const { className, ...rest } = props;
 
   const { fieldProps, metaProps } = useField(rest);
   const [infoVisible, setInfoVisible] = useState(false);
@@ -41,13 +40,16 @@ export const Check = <TSubmitValue extends unknown = boolean>(props: ICheckProps
    * the checkbox so we can use the checked
    * property instead of value.
    */
-  const handleChange = useCallback((event: React.ChangeEvent<HTMLInputElement>) => {
-    fieldProps.onChange({
-      target: {
-        value: event.target.checked,
-      },
-    });
-  }, [fieldProps]);
+  const handleChange = useCallback(
+    (event: React.ChangeEvent<HTMLInputElement>) => {
+      fieldProps.onChange({
+        target: {
+          value: event.target.checked,
+        },
+      });
+    },
+    [fieldProps]
+  );
 
   const isChecked = fieldProps.value === true;
   const inputGroupClass = rest.info !== undefined ? 'has-info' : undefined;
@@ -90,4 +92,4 @@ export const Check = <TSubmitValue extends unknown = boolean>(props: ICheckProps
       </Col>
     </FieldRow>
   );
-}
+};

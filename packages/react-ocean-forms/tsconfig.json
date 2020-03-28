@@ -4,13 +4,7 @@
     "jsx": "react",
     "declaration": false,
     "sourceMap": false,
-    "lib": [
-      "es5",
-      "dom",
-
-      "es2015.promise",
-      "es2015.collection",
-    ],
+    "lib": ["es5", "dom", "es2015.promise", "es2015.collection"],
     "target": "es5",
     "noImplicitAny": true,
     "noImplicitReturns": true,

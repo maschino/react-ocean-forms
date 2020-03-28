@@ -18,62 +18,71 @@ import { PlaintextDatePicker } from './PlaintextDatePicker';
 /**
  * Component for displaying datetime
  */
-export const DatePicker = <TSubmitValue extends unknown = string>(props: IDatePickerProps<TSubmitValue>): JSX.Element => {
-  const {
-    dateFormat, timeFormat, inputFormat,
-    ...rest
-  } = props;
+export const DatePicker = <TSubmitValue extends unknown = string>(
+  props: IDatePickerProps<TSubmitValue>
+): JSX.Element => {
+  const { dateFormat, timeFormat, inputFormat, ...rest } = props;
 
   const { fieldProps, metaProps } = useField(rest);
 
-  const handleBlur = useCallback((value: moment.Moment | string) => {
-    const parsed = moment(value, inputFormat);
+  const handleBlur = useCallback(
+    (value: moment.Moment | string) => {
+      const parsed = moment(value, inputFormat);
 
-    const formatted = (parsed.isValid()) ? parsed : value;
+      const formatted = parsed.isValid() ? parsed : value;
 
-    if (moment.isMoment(formatted)) {
-      fieldProps.onChange({
-        target: {
-          value: formatted.format(),
-        },
-      });
-    } else if (value === '') {
-      fieldProps.onChange({
-        target: {
-          value,
-        },
-      });
-    } else {
-      fieldProps.onChange({
-        target: {
-          value: '',
-        },
-      });
-    }
-  }, [fieldProps, inputFormat]);
+      if (moment.isMoment(formatted)) {
+        fieldProps.onChange({
+          target: {
+            value: formatted.format(),
+          },
+        });
+      } else if (value === '') {
+        fieldProps.onChange({
+          target: {
+            value,
+          },
+        });
+      } else {
+        fieldProps.onChange({
+          target: {
+            value: '',
+          },
+        });
+      }
+    },
+    [fieldProps, inputFormat]
+  );
 
-  const handleChange = useCallback((value: moment.MomentInput) => {
-    if (moment.isMoment(value)) {
-      fieldProps.onChange({
-        target: {
-          value: value.format(),
-        },
-      });
-    } else if (value === '') {
-      fieldProps.onChange({
-        target: {
-          value,
-        },
-      });
-    }
-  }, [fieldProps]);
+  const handleChange = useCallback(
+    (value: moment.MomentInput) => {
+      if (moment.isMoment(value)) {
+        fieldProps.onChange({
+          target: {
+            value: value.format(),
+          },
+        });
+      } else if (value === '') {
+        fieldProps.onChange({
+          target: {
+            value,
+          },
+        });
+      }
+    },
+    [fieldProps]
+  );
 
   const fieldValue = fieldProps.value;
-  if (typeof fieldValue !== 'string' && typeof fieldValue !== 'number'
-      && !moment.isMoment(fieldValue) && fieldValue !== undefined) {
+  if (
+    typeof fieldValue !== 'string' &&
+    typeof fieldValue !== 'number' &&
+    !moment.isMoment(fieldValue) &&
+    fieldValue !== undefined
+  ) {
     throw new Error(
-      'Incompatible field value supplied for input component '
-      + `${fieldProps.id}. Only values with type string, number or undefined are allowed.`,
+      'Incompatible field value supplied for input component ' +
+        `${fieldProps.id}. Only values with type string, number or undefined are allowed.`
     );
   }
 

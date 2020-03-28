@@ -15,18 +15,16 @@ import { IFieldRowProps } from './FieldRow.types';
  * classes based on the meta state of the field
  */
 export const FieldRow: React.FC<IFieldRowProps> = (props) => {
-  const {
-    valid,
-    touched,
-    children,
-    className,
-    ...rest
-  } = props;
+  const { valid, touched, children, className, ...rest } = props;
 
   const classes = className === '' || className === undefined ? [] : [className];
 
-  if (!valid) { classes.push('is-invalid'); }
-  if (touched) { classes.push('is-touched'); }
+  if (!valid) {
+    classes.push('is-invalid');
+  }
+  if (touched) {
+    classes.push('is-touched');
+  }
 
   const groupClass = classes.join(' ').trim();
 

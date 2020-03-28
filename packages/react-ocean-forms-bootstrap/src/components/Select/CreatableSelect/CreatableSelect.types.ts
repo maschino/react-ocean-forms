@@ -9,5 +9,5 @@ export interface ICreatableSelectProps<TSubmitValue> extends ISelectProps<TSubmi
    * Label that is shown to create an select option
    */
   createPrefixLabel?: string;
-  onCreateOption? (newValue: string): Promise<ISelectOption>;
+  onCreateOption?(newValue: string): Promise<ISelectOption>;
 }

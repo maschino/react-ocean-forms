@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { render } from '@testing-library/react'
+import { render } from '@testing-library/react';
 import { Form } from 'react-ocean-forms';
 
 import { FormButton } from './FormButton';

@@ -12,8 +12,12 @@ import { useField } from 'react-ocean-forms';
 import { ActionMeta } from 'react-select/lib/types';
 import { FieldLine } from '../../FieldLine';
 import {
-  IPreparedSelectProps, ISelectBaseProps, ISelectFieldValue,
-  ISelectOption, ISelectOptions, isSelectOption,
+  IPreparedSelectProps,
+  ISelectBaseProps,
+  ISelectFieldValue,
+  ISelectOption,
+  ISelectOptions,
+  isSelectOption,
 } from './SelectBase.types';
 
 /**
@@ -40,7 +44,9 @@ interface IUpdatedLabelsResult {
  * form groups with an select input and
  * oForm support
  */
-export const SelectBase = <TSubmitValue extends unknown = ISelectFieldValue>(props: ISelectBaseProps<TSubmitValue>): JSX.Element => {
+export const SelectBase = <TSubmitValue extends unknown = ISelectFieldValue>(
+  props: ISelectBaseProps<TSubmitValue>
+): JSX.Element => {
   const {
     renderSelect,
     placeholder = 'ojs_select_placeholder',
@@ -64,19 +70,22 @@ export const SelectBase = <TSubmitValue extends unknown = ISelectFieldValue>(pro
    * the select because oForms is expecting
    * default input onChange behaviour.
    */
-  const handleChange = useCallback((value: ISelectFieldValue, action?: ActionMeta): void => {
-    const { handleChange } = props;
+  const handleChange = useCallback(
+    (value: ISelectFieldValue, action?: ActionMeta): void => {
+      const { handleChange } = props;
 
-    fieldProps.onChange({
-      target: {
-        value,
-      },
-    });
+      fieldProps.onChange({
+        target: {
+          value,
+        },
+      });
 
-    if (handleChange) {
-      handleChange(value, action);
-    }
-  }, [fieldProps, props]);
+      if (handleChange) {
+        handleChange(value, action);
+      }
+    },
+    [fieldProps, props]
+  );
 
   /**
    * Manually handle the onBlur event of
@@ -94,10 +103,14 @@ export const SelectBase = <TSubmitValue extends unknown = ISelectFieldValue>(pro
    * @param options The available select options
    * @param value The value that may need update
    */
-  const updateSelectOptionLabel = useCallback((options: ISelectOptions, value: ISelectOption): ISelectOption | undefined => {
+  const updateSelectOptionLabel = useCallback((options: ISelectOptions, value: ISelectOption):
+    | ISelectOption
+    | undefined => {
     let selectableValue: ISelectOption | undefined;
-    options.some(item => {
-      if (item.value !== value.value) { return false; }
+    options.some((item) => {
+      if (item.value !== value.value) {
+        return false;
+      }
 
       selectableValue = item;
 
@@ -120,35 +133,38 @@ export const SelectBase = <TSubmitValue extends unknown = ISelectFieldValue>(pro
    * @param options The available options
    * @param value The current value
    */
-  const getUpdateLabels = useCallback((options: ISelectOptions, value: SelectFieldValue): IUpdatedLabelsResult => {
-    let selectedOptions: SelectFieldValue;
-    let needsUpdate = false;
+  const getUpdateLabels = useCallback(
+    (options: ISelectOptions, value: SelectFieldValue): IUpdatedLabelsResult => {
+      let selectedOptions: SelectFieldValue;
+      let needsUpdate = false;
 
-    if (isSelectOption(value)) {
-      // If only one option is selected
-      const updated = updateSelectOptionLabel(options, value);
-      needsUpdate = (updated !== undefined);
-      selectedOptions = (needsUpdate)
-        ? updated
-        : value;
-    } else if (Array.isArray(value)) {
-      // Map the values
-      selectedOptions = value.map(v => {
-        const updated = updateSelectOptionLabel(options, v);
-        // If null was returned, no updated is needed
-        if (updated === undefined) { return v; }
-        // Otherwise set the flag to true
-        needsUpdate = true;
+      if (isSelectOption(value)) {
+        // If only one option is selected
+        const updated = updateSelectOptionLabel(options, value);
+        needsUpdate = updated !== undefined;
+        selectedOptions = needsUpdate ? updated : value;
+      } else if (Array.isArray(value)) {
+        // Map the values
+        selectedOptions = value.map((v) => {
+          const updated = updateSelectOptionLabel(options, v);
+          // If null was returned, no updated is needed
+          if (updated === undefined) {
+            return v;
+          }
+          // Otherwise set the flag to true
+          needsUpdate = true;
 
-        return updated;
-      });
-    }
+          return updated;
+        });
+      }
 
-    return {
-      needsUpdate,
-      selectedOptions,
-    };
-  }, [updateSelectOptionLabel]);
+      return {
+        needsUpdate,
+        selectedOptions,
+      };
+    },
+    [updateSelectOptionLabel]
+  );
 
   /**
    * Get the value of the field with updated labels
@@ -156,11 +172,8 @@ export const SelectBase = <TSubmitValue extends unknown = ISelectFieldValue>(pro
    * @param options The available options
    */
   const fieldValue = useMemo(() => {
-    const fieldValue = (fieldProps.value as ISelectFieldValue | undefined);
-    const {
-      needsUpdate,
-      selectedOptions,
-    } = getUpdateLabels(options, fieldValue);
+    const fieldValue = fieldProps.value as ISelectFieldValue | undefined;
+    const { needsUpdate, selectedOptions } = getUpdateLabels(options, fieldValue);
     if (needsUpdate && selectedOptions !== undefined) {
       // Check if the current value has a different label than the value
       // with the same key in the options array. Bugfix to change the
@@ -177,17 +190,12 @@ export const SelectBase = <TSubmitValue extends unknown = ISelectFieldValue>(pro
     if (isSelectOption(fieldValue)) {
       displayValue = fieldValue.label;
     } else if (Array.isArray(fieldValue)) {
-      displayValue = fieldValue.map(v => v.label).join(', ');
+      displayValue = fieldValue.map((v) => v.label).join(', ');
     }
 
     return (
       <FieldLine {...props} fieldProps={fieldProps} metaProps={metaProps}>
-        <StrapInput
-          {...fieldProps}
-          value={displayValue}
-          plaintext
-          onChange={undefined}
-        />
+        <StrapInput {...fieldProps} value={displayValue} plaintext onChange={undefined} />
       </FieldLine>
     );
   }
@@ -218,11 +226,7 @@ export const SelectBase = <TSubmitValue extends unknown = ISelectFieldValue>(pro
   };
 
   return (
-    <FieldLine
-      fieldProps={fieldProps}
-      metaProps={metaProps}
-      {...fieldlineProps}
-    >
+    <FieldLine fieldProps={fieldProps} metaProps={metaProps} {...fieldlineProps}>
       {renderSelect(preparedProps, fieldProps)}
     </FieldLine>
   );

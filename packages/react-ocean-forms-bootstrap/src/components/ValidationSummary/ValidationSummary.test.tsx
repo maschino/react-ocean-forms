@@ -39,7 +39,11 @@ describe('<ValidationSummary />', () => {
 
     const { getByText } = render(
       <Form>
-        <ValidationSummary id="validation-summary" disableFocusOnSubmit fieldErrorComponent={CustomErrorRenderer} />
+        <ValidationSummary
+          id="validation-summary"
+          disableFocusOnSubmit
+          fieldErrorComponent={CustomErrorRenderer}
+        />
         <Input name="mock" label="mock" validators={[validators.required]} />
         <FormButton type="submit">Submit</FormButton>
       </Form>

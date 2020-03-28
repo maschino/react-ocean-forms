@@ -79,13 +79,11 @@ describe('<SelectBase />', () => {
 
   it('should render a field line and a react-select', () => {
     // const renderSelect = jest.fn();
-
     // const { wrapper } = setup({
     //   props: {
     //     renderSelect,
     //   },
     // });
-
     // expect(wrapper.find(FieldLine).exists()).toBeTruthy();
     // // expect(wrapper.find(ReactSelect).exists()).toBeTruthy();
     // expect(renderSelect).toBeCalled();
@@ -93,7 +91,6 @@ describe('<SelectBase />', () => {
 
   it('should pass the meta props to the field line', () => {
     // const { wrapper, meta } = setup();
-
     // expect(wrapper.find(FieldLine).prop('meta')).toEqual(meta);
   });
 
@@ -102,7 +99,6 @@ describe('<SelectBase />', () => {
       // const { field } = setup({
       //   fieldOverrides: { value: { value: 'two', label: '' } },
       // });
-
       // const fieldValue: ISelectOption = field.value as ISelectOption;
       // expect(fieldValue.label).toBe('');
     });
@@ -112,7 +108,6 @@ describe('<SelectBase />', () => {
       //   props: { multi: true },
       //   fieldOverrides: { value: [{ value: 'two', label: '' }] },
       // });
-
       // const fieldValue: ISelectOptions = field.value as ISelectOptions;
       // expect(fieldValue[0].label).toBe('');
     });
@@ -121,7 +116,6 @@ describe('<SelectBase />', () => {
       // const { field } = setup({
       //   fieldOverrides: { value: { value: 'two', label: '' } },
       // });
-
       // expect(field.onChange).toHaveBeenCalledWith({
       //   target: {
       //     value: { value: 'two', label: 'Two' },
@@ -136,14 +130,11 @@ describe('<SelectBase />', () => {
       // const renderSelect = jest.fn().mockImplementation((props: IPreparedSelectProps) => {
       //   changeProp = props.onChange;
       // });
-
       // const { field, options } = setup({
       //   props: { renderSelect },
       // });
-
       // expect(changeProp).toBeDefined();
       // changeProp && changeProp(options[1]);
-
       // expect(field.onChange).toHaveBeenCalledWith({
       //   target: {
       //     value: options[1],
@@ -156,19 +147,15 @@ describe('<SelectBase />', () => {
       // const renderSelect = jest.fn().mockImplementation((props: IPreparedSelectProps) => {
       //   changeProp = props.onChange;
       // });
-
       // const { field, options } = setup({
       //   props: {
       //     renderSelect,
       //     multi: true,
       //   },
       // });
-
       // const selected = [options[0], options[1]];
-
       // expect(changeProp).toBeDefined();
       // changeProp && changeProp(selected);
-
       // expect(field.onChange).toHaveBeenCalledWith({
       //   target: {
       //     value: selected,
@@ -181,14 +168,11 @@ describe('<SelectBase />', () => {
       // const renderSelect = jest.fn().mockImplementation((props: IPreparedSelectProps) => {
       //   blurProp = props.onBlur;
       // });
-
       // const { field } = setup({
       //   props: { renderSelect },
       // });
-
       // expect(blurProp).toBeDefined();
       // blurProp && blurProp();
-
       // expect(field.onBlur).toHaveBeenCalledWith();
     });
   });
@@ -227,14 +211,12 @@ describe('<SelectBase />', () => {
     // const renderSelect = jest.fn().mockImplementation((props: IPreparedSelectProps) => {
     //   className = props.className;
     // });
-
     // setup({
     //   metaOverrides: { valid: false },
     //   props: {
     //     renderSelect,
     //   },
     // });
-
     // expect(className).toBe('react-select-control is-invalid');
   });
 
@@ -245,18 +227,15 @@ describe('<SelectBase />', () => {
       //   changeProp = props.onChange;
       // });
       // const handleChange = jest.fn();
-
       // const { options } = setup({
       //   props: {
       //     renderSelect,
       //     handleChange,
       //   },
       // });
-
       // const selected = [options[0], options[1]];
       // expect(changeProp).toBeDefined();
       // changeProp && changeProp(selected);
-
       // expect(handleChange).toBeDefined();
       // expect(handleChange).toBeCalled();
     });

@@ -69,17 +69,14 @@ describe('<Select />', () => {
 
   it('should render a select-base', () => {
     // const { wrapper } = setup();
-
     // expect(wrapper.find(SelectBase).exists()).toBeTruthy();
   });
 
   it('should render a react-select', () => {
     // const { wrapper } = setup();
-
     // type SelectInstance = { renderSelect(): JSX.Element };
     // const i = ((wrapper.instance()) as unknown) as SelectInstance;
     // const result = shallow(i.renderSelect());
-
     // expect(result.find(ReactSelect).exists()).toBeTruthy();
   });
 });

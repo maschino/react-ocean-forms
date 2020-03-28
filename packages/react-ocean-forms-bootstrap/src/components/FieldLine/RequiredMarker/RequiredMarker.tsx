@@ -21,7 +21,9 @@ export const RequiredMarker: React.FC<IRequiredMarkerProps> = (props) => {
   const requiredTitle = useFormText('ojs_field_required');
 
   // Do nothing in plaintext mode
-  if (hidden) { return null; }
+  if (hidden) {
+    return null;
+  }
 
   if (required) {
     return (

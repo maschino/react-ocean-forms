@@ -21,14 +21,11 @@ export const ValidatingSpinner: React.FC<IValidatingSpinnerProps> = (props) => {
 
   const validatingTitle = useFormText('ojs_field_validating');
 
-  if (!isValidating) { return null; }
+  if (!isValidating) {
+    return null;
+  }
 
   return (
-    <FontAwesomeIcon
-      icon={faSpinner}
-      spin
-      className="ico-loading mr-2"
-      title={validatingTitle}
-    />
+    <FontAwesomeIcon icon={faSpinner} spin className="ico-loading mr-2" title={validatingTitle} />
   );
 };

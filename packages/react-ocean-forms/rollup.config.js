@@ -37,13 +37,13 @@ const getBaseConfig = (showFilesize = false, noTsDeclaration = false) => {
       commonjs(),
       showFilesize ? filesize() : null,
     ],
-    external: id => {
-      return externalDependencies.some(dep => id.indexOf(dep) === 0);
+    external: (id) => {
+      return externalDependencies.some((dep) => id.indexOf(dep) === 0);
     },
   };
 };
 
-export default commands => {
+export default (commands) => {
   const cjsConfig = {
     ...getBaseConfig(true),
     output: {
