@@ -12,8 +12,7 @@
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
     "start": "rollup -c -w",
-    "build": "rollup -c",
-    "lint": "eslint \"src/**\""
+    "build": "rollup -c"
   },
   "dependencies": {},
   "peerDependencies": {
@@ -21,7 +20,7 @@
     "prop-types": "^15.6.2",
     "react": "^16.4.0",
     "react-intl": "^2.7.2",
-    "react-ocean-forms": "^2.0.0"
+    "react-ocean-forms": "^3.0.0-rc.1"
   },
   "devDependencies": {
     "@types/enzyme": "^3.10.4",
@@ -32,23 +31,15 @@
     "@typescript-eslint/eslint-plugin": "^2.11.0",
     "@typescript-eslint/parser": "^2.11.0",
     "babel-eslint": "^10.0.3",
-    "coveralls": "^3.0.9",
     "enzyme": "^3.10.0",
     "enzyme-adapter-react-16": "^1.15.1",
     "enzyme-to-json": "^3.4.3",
-    "eslint": "^6.7.2",
-    "eslint-config-react-app": "^5.1.0",
-    "eslint-plugin-flowtype": "^4.5.2",
-    "eslint-plugin-import": "^2.19.1",
-    "eslint-plugin-jsx-a11y": "^6.2.3",
-    "eslint-plugin-react": "^7.17.0",
-    "eslint-plugin-react-hooks": "^2.3.0",
     "jest": "^24.9.0",
     "prop-types": "^15.7.2",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-intl": "^2.9.0",
-    "react-ocean-forms": "^2.2.0",
+    "react-ocean-forms": "^3.0.0-rc.1",
     "rollup": "^1.27.10",
     "rollup-plugin-commonjs": "^10.1.0",
     "rollup-plugin-filesize": "^6.2.1",
