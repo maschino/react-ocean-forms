@@ -11,7 +11,7 @@ function getProjectConfig(projectName, additionalSetupFiles = []) {
       '^.+\\.s?css$': path.resolve(__dirname, 'config/jest/cssTransform.ts'),
     },
     moduleNameMapper: {
-      '^react-ocean-forms$': '<rootDir>/../react-ocean-forms/src',
+      '^react-ocean-forms$': path.resolve(__dirname, 'packages/react-ocean-forms/src'),
     },
     snapshotSerializers: ['enzyme-to-json/serializer'],
   };
