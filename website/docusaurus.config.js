@@ -2,10 +2,10 @@ module.exports = {
   title: 'react-ocean-forms',
   tagline:
     'react-ocean-forms is a flexible and lightweight framework for rendering and validating forms with React.',
-  url: 'https://your-docusaurus-test-site.com',
-  baseUrl: '/',
+  url: 'https://maschino.github.io',
+  baseUrl: '/react-ocean-forms/',
   favicon: 'img/favicon.ico',
-  organizationName: 'environmental-agency-austria', // Usually your GitHub org/user name.
+  organizationName: 'maschino', // Usually your GitHub org/user name.
   projectName: 'react-ocean-forms', // Usually your repo name.
   themeConfig: {
     navbar: {
