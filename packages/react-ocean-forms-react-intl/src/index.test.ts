@@ -2,9 +2,7 @@ import * as FormComponents from './index';
 
 describe('Index', () => {
   describe('Component exports', () => {
-    const components = [
-      'IntlForm',
-    ];
+    const components = ['IntlForm'];
 
     components.forEach((component) => {
       it(`Should export ${component}`, () => {

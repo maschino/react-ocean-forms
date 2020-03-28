@@ -6,4 +6,4 @@ type TFormProps = JSX.LibraryManagedAttributes<typeof Form, PropsOf<typeof Form>
 /**
  * Props for the IntlForm component
  */
-export interface IIntlFormProps extends TFormProps, InjectedIntlProps { }
+export interface IIntlFormProps extends TFormProps, InjectedIntlProps {}

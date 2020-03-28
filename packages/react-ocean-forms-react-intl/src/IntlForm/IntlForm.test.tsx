@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 
 import { shallow, ShallowWrapper } from 'enzyme';
 import { InjectedIntl } from 'react-intl';
@@ -31,13 +31,8 @@ describe('<IntlForm />', () => {
       onError: jest.fn(),
     };
 
-    const wrapper = shallow((
-      <BaseIntlForm
-        intl={intl}
-      />
-    ));
-
-    const formatIntlString = wrapper.find('Form').prop<TSTringFormatter>('formatString');
+    const wrapper = shallow(<BaseIntlForm intl={intl} />);
+    const formatIntlString = wrapper.prop<TSTringFormatter>('formatString');
 
     return {
       wrapper,
@@ -53,7 +48,7 @@ describe('<IntlForm />', () => {
 
   it('should pass a formatString method to the base form', () => {
     const { wrapper } = setup();
-    expect(wrapper.find('Form').prop('formatString')).toBeInstanceOf(Function);
+    expect(wrapper.prop('formatString')).toBeInstanceOf(Function);
   });
 
   describe('formatIntlString', () => {
@@ -81,9 +76,9 @@ describe('<IntlForm />', () => {
 
     describe('error cases', () => {
       const cases: [string, null | undefined | string][] = [
-        [ 'null', null ],
-        [ 'undefined', undefined ],
-        [ 'empty', '' ],
+        ['null', null],
+        ['undefined', undefined],
+        ['empty', ''],
       ];
 
       describe.each(cases)('called with "%s"', (name, value) => {
