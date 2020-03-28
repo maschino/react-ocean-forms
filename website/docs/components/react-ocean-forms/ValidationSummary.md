@@ -1,6 +1,11 @@
-### Examples
+---
+title: ValidationSummary
+sidebar_label: ValidationSummary
+---
 
-#### Showcase
+## Examples
+
+### Showcase
 
 Showcase of the validation summary. Click on submit to display the summary.
 
@@ -24,3 +29,7 @@ function Example({ logMessage }) {
 
 <Example />;
 ```
+
+## API Reference
+
+See [ValidationSummary API reference](../../api/react-ocean-forms/modules/validationsummary#const-validationsummary) and [prop types](../../api/react-ocean-forms/interfaces/validationsummary.ivalidationsummaryprops).

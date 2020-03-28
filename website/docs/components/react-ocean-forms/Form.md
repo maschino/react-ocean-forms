@@ -1,6 +1,11 @@
-### Examples
+---
+title: Form
+sidebar_label: Form
+---
 
-#### Simple form
+## Examples
+
+### Simple form
 
 Showcase of a simple form
 
@@ -30,7 +35,7 @@ function Example() {
 <Example />;
 ```
 
-#### Default values
+### Default values
 
 Provide the form with default values that should be displayed on load. Note how the default value won't update the Field, if the user changed the input. However, on form reset the default value will be used again.
 
@@ -70,7 +75,7 @@ function Example() {
 <Example />;
 ```
 
-#### Values
+### Values
 
 Override the values of the form fields. Changing those values will override the Field value, even if the user changed it.
 
@@ -108,7 +113,7 @@ function Example() {
 <Example />;
 ```
 
-#### Disabled form
+### Disabled form
 
 Setting the disabled prop will disable all form fields.
 
@@ -133,7 +138,7 @@ function Example() {
 <Example />;
 ```
 
-#### Plaintext form
+### Plaintext form
 
 Setting the plaintext prop will show all form fields in a text-only mode.
 
@@ -157,7 +162,7 @@ function Example({ logMessage }) {
 <Example />;
 ```
 
-#### Form-wide validation
+### Form-wide validation
 
 Use a form-wide validation function before submit. Notice that the onSubmit callback is not invoked if you type 'bad' into the input.
 
@@ -205,3 +210,7 @@ function Example() {
 
 <Example />;
 ```
+
+## API Reference
+
+See [Form API reference](../../api/react-ocean-forms/modules/form#const-form) and [prop types](../../api/react-ocean-forms/interfaces/form.iformprops).

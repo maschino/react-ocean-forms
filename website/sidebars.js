@@ -13,7 +13,22 @@ function getApiSidebarContent(moduleName) {
 
 module.exports = {
   docs: {
-    Docusaurus: ['doc1'],
+    Introduction: ['introduction/installation', 'introduction/getting_started'],
+
+    Components: [
+      {
+        type: 'category',
+        label: 'react-ocean-forms',
+        items: [
+          'components/react-ocean-forms/Form',
+          'components/react-ocean-forms/FieldGroup',
+          'components/react-ocean-forms/ValidationSummary',
+          'components/react-ocean-forms/Input',
+          'components/react-ocean-forms/FormButton',
+          'components/react-ocean-forms/FormText',
+        ],
+      },
+    ],
 
     'API Reference': [
       {

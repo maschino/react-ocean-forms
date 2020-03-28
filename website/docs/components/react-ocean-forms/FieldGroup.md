@@ -1,6 +1,11 @@
-### Examples
+---
+title: FieldGroup
+sidebar_label: FieldGroup
+---
 
-#### Simple field group
+## Examples
+
+### Simple field group
 
 Showcase of a simple field group
 
@@ -42,3 +47,7 @@ function Example() {
 
 <Example />;
 ```
+
+## API Reference
+
+See [FieldGroup API reference](../../api/react-ocean-forms/modules/fieldgroup#const-fieldgroup) and [prop types](../../api/react-ocean-forms/interfaces/fieldgroup.ifieldgroupprops).

@@ -1,6 +1,11 @@
-### Examples
+---
+title: Input
+sidebar_label: Input
+---
 
-#### Input types
+## Examples
+
+### Input types
 
 Showcase of the input type support
 
@@ -42,7 +47,7 @@ function Example() {
 <Example />;
 ```
 
-#### Custom input
+### Custom input
 
 Creating your own input components is quite simple. Note that if you want to use the flexible Intl support, you should put all your text outputs through meta.stringFormatter.
 
@@ -103,3 +108,7 @@ function Example() {
 
 <Example />;
 ```
+
+## API Reference
+
+See [Input API reference](../../api/react-ocean-forms/modules/input#const-input) and [prop types](../../api/react-ocean-forms/interfaces/interfaces/input.iinputprops).

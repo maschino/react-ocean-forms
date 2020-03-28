@@ -1,6 +1,11 @@
-### Examples
+---
+title: FormButton
+sidebar_label: FormButton
+---
 
-#### FormButton
+## Examples
+
+### FormButton
 
 Showcase of the form button
 
@@ -33,7 +38,7 @@ function Example() {
 <Example />;
 ```
 
-#### Submit args
+### Submit args
 
 Arguments to the form.onSubmit handler can be passed this way
 
@@ -62,7 +67,7 @@ function Example() {
 <Example />;
 ```
 
-#### Disabled form
+### Disabled form
 
 FormButtons are disabled if the form is disabled too
 
@@ -82,3 +87,7 @@ function Example() {
 
 <Example />;
 ```
+
+## API Reference
+
+See [FormButton API reference](../../api/react-ocean-forms/modules/formbutton#const-formbutton) and [prop types](../../api/react-ocean-forms/interfaces/formbutton.iformbuttonprops).

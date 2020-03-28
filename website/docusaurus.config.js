@@ -2,11 +2,12 @@ module.exports = {
   title: 'react-ocean-forms',
   tagline:
     'react-ocean-forms is a flexible and lightweight framework for rendering and validating forms with React.',
-  url: 'https://maschino.github.io',
+  url: 'https://maschino.github.io', // TODO: Change before PR
   baseUrl: '/react-ocean-forms/',
   favicon: 'img/favicon.ico',
-  organizationName: 'maschino', // Usually your GitHub org/user name.
+  organizationName: 'maschino', // TODO: Change before PR
   projectName: 'react-ocean-forms', // Usually your repo name.
+  themes: ['@docusaurus/theme-live-codeblock'],
   themeConfig: {
     navbar: {
       title: 'React Ocean Forms',
@@ -16,14 +17,14 @@ module.exports = {
       },
       links: [
         {
-          to: 'docs/doc1',
+          to: 'docs/introduction/getting_started',
           activeBasePath: 'docs',
           label: 'Docs',
           position: 'left',
         },
         { to: 'blog', label: 'Blog', position: 'left' },
         {
-          href: 'https://github.com/facebook/docusaurus',
+          href: 'https://github.com/maschino/react-ocean-forms', // TODO: Change before PR
           label: 'GitHub',
           position: 'right',
         },
@@ -36,25 +37,16 @@ module.exports = {
           title: 'Docs',
           items: [
             {
-              label: 'Style Guide',
-              to: 'docs/doc1',
+              label: 'Getting started',
+              to: 'docs/introduction/getting_started',
             },
             {
-              label: 'Second Doc',
-              to: 'docs/doc2',
-            },
-          ],
-        },
-        {
-          title: 'Community',
-          items: [
-            {
-              label: 'Stack Overflow',
-              href: 'https://stackoverflow.com/questions/tagged/docusaurus',
+              label: 'Components',
+              to: 'docs/components/react-ocean-forms/Form',
             },
             {
-              label: 'Discord',
-              href: 'https://discordapp.com/invite/docusaurus',
+              label: 'API Reference',
+              to: 'docs/api/react-ocean-forms/modules/form',
             },
           ],
         },
@@ -67,11 +59,7 @@ module.exports = {
             },
             {
               label: 'GitHub',
-              href: 'https://github.com/facebook/docusaurus',
-            },
-            {
-              label: 'Twitter',
-              href: 'https://twitter.com/docusaurus',
+              href: 'https://github.com/maschino/react-ocean-forms', // TODO: Change before PR
             },
           ],
         },
