@@ -41,7 +41,8 @@
     "typescript": "^3.8.3"
   },
   "workspaces": [
-    "packages/*"
+    "packages/*",
+    "website"
   ],
   "scripts": {
     "lerna": "lerna",
