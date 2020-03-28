@@ -10,8 +10,6 @@
   "scripts": {
     "start": "rollup -c -w",
     "build": "rollup -c",
-    "start:docs": "styleguidist server",
-    "build:docs": "styleguidist build",
     "build:typedocs": "typedoc"
   },
   "peerDependencies": {
