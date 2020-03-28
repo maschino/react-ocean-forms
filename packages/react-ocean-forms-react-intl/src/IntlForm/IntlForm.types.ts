@@ -1,3 +1,8 @@
+/**
+ * @packageDocumentation
+ * @module FieldError
+ */
+
 import { InjectedIntlProps } from 'react-intl';
 import { Form, PropsOf } from 'react-ocean-forms';
 
