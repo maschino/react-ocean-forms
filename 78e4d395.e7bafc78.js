@@ -1,1 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[78],{212:function(o){o.exports=JSON.parse('{"allTagsPath":"/react-ocean-forms/blog/tags","slug":"facebook","name":"facebook","count":1,"permalink":"/react-ocean-forms/blog/tags/facebook"}')}}]);

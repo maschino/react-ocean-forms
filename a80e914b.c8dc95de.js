@@ -1,1 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[108],{241:function(e){e.exports=JSON.parse('{"permalink":"/react-ocean-forms/blog","page":1,"postsPerPage":10,"totalPages":1,"totalCount":3,"previousPage":null,"nextPage":null}')}}]);
