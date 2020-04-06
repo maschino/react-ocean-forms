@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { render, fireEvent, waitForElement } from '@testing-library/react';
+import { render, fireEvent, waitFor } from '@testing-library/react';
 import { Form, Input, FormButton, validators } from 'react-ocean-forms';
 
 import { ValidationSummary } from './ValidationSummary';
@@ -28,7 +28,7 @@ describe('<ValidationSummary />', () => {
     );
 
     fireEvent.click(getByText('Submit'));
-    const fragment = await waitForElement(() => asFragment());
+    const fragment = await waitFor(() => asFragment());
     expect(fragment).toMatchSnapshot();
   });
 
@@ -37,7 +37,7 @@ describe('<ValidationSummary />', () => {
       return <div>Custom error renderer</div>;
     };
 
-    const { getByText } = render(
+    const { getByText, findByText } = render(
       <Form>
         <ValidationSummary
           id="validation-summary"
@@ -50,7 +50,7 @@ describe('<ValidationSummary />', () => {
     );
 
     fireEvent.click(getByText('Submit'));
-    const customError = await waitForElement(() => getByText('Custom error renderer'));
+    const customError = await findByText('Custom error renderer');
     expect(customError).toBeVisible();
   });
 });

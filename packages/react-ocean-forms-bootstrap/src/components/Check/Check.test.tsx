@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { render, fireEvent, waitForElement } from '@testing-library/react';
+import { render, fireEvent } from '@testing-library/react';
 import { Form } from 'react-ocean-forms';
 
 import { Check } from './Check';
@@ -19,7 +19,7 @@ describe('<Check />', () => {
 
   it('should call field.onChange when the input changes', async () => {
     const handleChange = jest.fn();
-    const { getByRole } = render(
+    const { getByRole, findByRole } = render(
       <Form>
         <Check name="mock" label="mock" onChange={handleChange} />
       </Form>
@@ -28,13 +28,13 @@ describe('<Check />', () => {
     fireEvent.click(getByRole('checkbox'));
     expect(handleChange).toHaveBeenCalledWith(true);
 
-    let checkbox = await waitForElement(() => getByRole('checkbox'));
+    let checkbox = await findByRole('checkbox');
     expect(checkbox).toBeChecked();
 
     fireEvent.click(getByRole('checkbox'));
     expect(handleChange).toHaveBeenCalledWith(false);
 
-    checkbox = await waitForElement(() => getByRole('checkbox'));
+    checkbox = await findByRole('checkbox');
     expect(checkbox).not.toBeChecked();
   });
 
@@ -49,7 +49,7 @@ describe('<Check />', () => {
   });
 
   it('should display an info message if the info button has been clicked', async () => {
-    const { getByRole, getByText } = render(
+    const { getByRole, findByText } = render(
       <Form>
         <Check name="mock" label="mock" info="info text" />
       </Form>
@@ -57,7 +57,7 @@ describe('<Check />', () => {
 
     fireEvent.click(getByRole('button'));
 
-    const infoText = await waitForElement(() => getByText('info text'));
+    const infoText = await findByText('info text');
     expect(infoText).toBeVisible();
   });
 

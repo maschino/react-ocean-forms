@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { render, fireEvent, waitForElement } from '@testing-library/react';
+import { render, fireEvent } from '@testing-library/react';
 import { Form, validators } from 'react-ocean-forms';
 
 import { Input } from './Input';
@@ -33,7 +33,7 @@ describe('<Input />', () => {
   it('should call field.onChange when the input changes', async () => {
     const changedValue = 'changed value';
     const handleChange = jest.fn();
-    const { getByLabelText } = render(
+    const { getByLabelText, findByLabelText } = render(
       <Form>
         <Input name="mock" label="mock" onChange={handleChange} />
       </Form>
@@ -42,7 +42,7 @@ describe('<Input />', () => {
     fireEvent.change(getByLabelText('mock'), { target: { value: changedValue } });
     expect(handleChange).toHaveBeenCalledWith(changedValue);
 
-    const input = await waitForElement(() => getByLabelText('mock'));
+    const input = await findByLabelText('mock');
     expect(input).toHaveValue(changedValue);
   });
 
