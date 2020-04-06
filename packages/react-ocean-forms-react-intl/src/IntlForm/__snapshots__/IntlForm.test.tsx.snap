@@ -1,7 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<IntlForm /> should render without crashing 1`] = `
-<Component
-  formatString={[Function]}
-/>
+<DocumentFragment>
+  <form
+    class=""
+  >
+    mock
+  </form>
+</DocumentFragment>
 `;

@@ -1,97 +1,73 @@
 import React from 'react';
 
-import { shallow, ShallowWrapper } from 'enzyme';
-import { InjectedIntl } from 'react-intl';
-import { TSTringFormatter } from 'react-ocean-forms';
+import { IntlProvider } from 'react-intl';
+import { FormText } from 'react-ocean-forms';
 
-import { BaseIntlForm } from './IntlForm';
+import { render } from '@testing-library/react';
+
+import { IntlForm } from './IntlForm';
 
 describe('<IntlForm />', () => {
-  interface ISetupResult {
-    wrapper: ShallowWrapper;
-    intl: InjectedIntl;
-    formatIntlString: TSTringFormatter;
-  }
-
-  const setup = (): ISetupResult => {
-    const intl: InjectedIntl = {
-      formatDate: jest.fn(),
-      formatTime: jest.fn(),
-      formatRelative: jest.fn(),
-      formatNumber: jest.fn(),
-      formatPlural: jest.fn(),
-      formatMessage: jest.fn().mockImplementation((value: { id: string }) => value.id),
-      formatHTMLMessage: jest.fn(),
-      locale: 'en',
-      formats: null,
-      messages: {},
-      defaultLocale: 'en',
-      defaultFormats: null,
-      now: jest.fn(),
-      onError: jest.fn(),
-    };
-
-    const wrapper = shallow(<BaseIntlForm intl={intl} />);
-    const formatIntlString = wrapper.prop<TSTringFormatter>('formatString');
-
-    return {
-      wrapper,
-      intl,
-      formatIntlString,
-    };
-  };
-
   it('should render without crashing', () => {
-    const { wrapper } = setup();
-    expect(wrapper).toMatchSnapshot();
+    const { asFragment, getByText } = render(
+      <IntlProvider locale="en">
+        <IntlForm>mock</IntlForm>
+      </IntlProvider>
+    );
+
+    expect(asFragment()).toMatchSnapshot();
+    expect(getByText('mock')).toBeVisible();
   });
 
-  it('should pass a formatString method to the base form', () => {
-    const { wrapper } = setup();
-    expect(wrapper.prop('formatString')).toBeInstanceOf(Function);
+  it('should pass the correct message translation method to the base form', () => {
+    const { getByText, queryByText } = render(
+      <IntlProvider locale="en" messages={{ test: 'translated text' }}>
+        <IntlForm>
+          <FormText text="test" />
+        </IntlForm>
+      </IntlProvider>
+    );
+
+    expect(queryByText('test')).toBeNull();
+    expect(getByText('translated text')).toBeVisible();
   });
 
-  describe('formatIntlString', () => {
-    it('should pass the message id to intl.formatMessage and return the result', () => {
-      const { intl, formatIntlString } = setup();
+  it('should pass the message params as well', () => {
+    const { getByText, queryByText } = render(
+      <IntlProvider locale="en" messages={{ test: 'translated text {foo}' }}>
+        <IntlForm>
+          <FormText text="test" values={{ foo: 'bar' }} />
+        </IntlForm>
+      </IntlProvider>
+    );
 
-      const mockMessage = 'mock';
-      const result = formatIntlString(mockMessage);
+    expect(queryByText('test')).toBeNull();
+    expect(getByText('translated text bar')).toBeVisible();
+  });
 
-      expect(intl.formatMessage).toHaveBeenCalledWith({ id: mockMessage }, undefined);
-      expect(result).toBe(mockMessage);
-    });
+  describe('error cases', () => {
+    const cases: [string, null | undefined | string][] = [
+      ['null', null],
+      ['undefined', undefined],
+      ['empty', ''],
+    ];
 
-    it('should pass the message params as well', () => {
-      const { intl, formatIntlString } = setup();
+    describe.each(cases)('called with "%s"', (name, value) => {
+      it('should return the passed value as-is', () => {
+        const { getByTestId } = render(
+          <IntlProvider locale="en">
+            <IntlForm>
+              <div data-testid="result">
+                {/*
+                 // TODO: Replace with expected error when new typescript version drops
+                 // @ts-ignore */}
+                <FormText text={value} />
+              </div>
+            </IntlForm>
+          </IntlProvider>
+        );
 
-      const mockMessage = 'mock';
-      const mockParams = {
-        foo: 'bar',
-      };
-
-      formatIntlString(mockMessage, mockParams);
-      expect(intl.formatMessage).toHaveBeenCalledWith({ id: mockMessage }, mockParams);
-    });
-
-    describe('error cases', () => {
-      const cases: [string, null | undefined | string][] = [
-        ['null', null],
-        ['undefined', undefined],
-        ['empty', ''],
-      ];
-
-      describe.each(cases)('called with "%s"', (name, value) => {
-        const { intl, formatIntlString } = setup();
-
-        it('should return the passed value as-is', () => {
-          const result = formatIntlString(value as string);
-          expect(result).toBe(value);
-        });
-
-        it('should not call intl.formatMessage', () => {
-          expect(intl.formatMessage).not.toHaveBeenCalled();
-        });
+        expect(getByTestId('result')).toBeEmpty();
       });
     });
   });

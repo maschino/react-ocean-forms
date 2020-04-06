@@ -21,7 +21,7 @@ import { IIntlFormProps } from './IntlForm.types';
  * React-intl wrapper for the OceanJS
  * Forms component.
  */
-export const BaseIntlForm: React.FC<IIntlFormProps> = (props) => {
+const BaseIntlForm: React.FC<IIntlFormProps> = (props) => {
   const { intl, children, ...rest } = props;
 
   const formatIntlString = useCallback(
