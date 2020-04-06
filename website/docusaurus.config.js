@@ -66,6 +66,12 @@ module.exports = {
       ],
       copyright: `Copyright © ${new Date().getFullYear()} Umweltbundesamt GmbH. Built with Docusaurus.`,
     },
+    algolia: {
+      appId: 'BH4D9OD16A',
+      apiKey: '837c1d40d2b976725ce1f98323c4fd43',
+      indexName: 'react-ocean-forms',
+      algoliaOptions: {}, // Optional, if provided by Algolia
+    },
   },
   presets: [
     [
