@@ -1,112 +1,30 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Input /> should only display the value if plaintext is set 1`] = `
-Object {
-  "wrapper": <FieldLine
-    field={
-      Object {
-        "disabled": false,
-        "id": "unitInput",
-        "name": "unitInput",
-        "onBlur": [MockFunction],
-        "onChange": [MockFunction],
-        "value": "",
-      }
-    }
-    label="unitLabel"
-    meta={
-      Object {
-        "error": null,
-        "isRequired": false,
-        "isValidating": false,
-        "plaintext": true,
-        "stringFormatter": [MockFunction],
-        "touched": false,
-        "valid": true,
-      }
-    }
-    name="unitInput"
-  />,
-}
-`;
-
-exports[`<Input /> should properly pass the type prop 1`] = `
-Object {
-  "wrapper": <FieldLine
-    field={
-      Object {
-        "disabled": false,
-        "id": "unitInput",
-        "name": "unitInput",
-        "onBlur": [MockFunction],
-        "onChange": [MockFunction],
-        "value": "",
-      }
-    }
-    label="unitLabel"
-    meta={
-      Object {
-        "error": null,
-        "isRequired": false,
-        "isValidating": false,
-        "plaintext": false,
-        "stringFormatter": [MockFunction],
-        "touched": false,
-        "valid": true,
-      }
-    }
-    name="unitInput"
-    type="number"
-  >
-    <input
-      disabled={false}
-      id="unitInput"
-      name="unitInput"
-      onBlur={[MockFunction]}
-      onChange={[MockFunction]}
-      type="number"
-      value=""
-    />
-  </FieldLine>,
-}
-`;
-
 exports[`<Input /> should render without crashing 1`] = `
-Object {
-  "wrapper": <FieldLine
-    field={
-      Object {
-        "disabled": false,
-        "id": "unitInput",
-        "name": "unitInput",
-        "onBlur": [MockFunction],
-        "onChange": [MockFunction],
-        "value": "",
-      }
-    }
-    label="unitLabel"
-    meta={
-      Object {
-        "error": null,
-        "isRequired": false,
-        "isValidating": false,
-        "plaintext": false,
-        "stringFormatter": [MockFunction],
-        "touched": false,
-        "valid": true,
-      }
-    }
-    name="unitInput"
+<DocumentFragment>
+  <form
+    class=""
   >
-    <input
-      disabled={false}
-      id="unitInput"
-      name="unitInput"
-      onBlur={[MockFunction]}
-      onChange={[MockFunction]}
-      type="text"
-      value=""
-    />
-  </FieldLine>,
-}
+    <div
+      class="field-group"
+    >
+      <label
+        class="text-right"
+        for="unitInput"
+      >
+        unitInput
+      </label>
+      <div
+        class="input-container"
+      >
+        <input
+          id="unitInput"
+          name="unitInput"
+          type="text"
+          value=""
+        />
+      </div>
+    </div>
+  </form>
+</DocumentFragment>
 `;

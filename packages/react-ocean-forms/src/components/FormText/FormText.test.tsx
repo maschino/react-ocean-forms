@@ -1,41 +1,36 @@
 import React from 'react';
 
-import { shallow, ShallowWrapper } from 'enzyme';
+import { render } from '@testing-library/react';
 
-import { createMockFormContext } from '../../test-utils/enzymeFormContext';
-import { IMessageValues } from '../../utils';
-import { useFormContext } from '../../hooks';
-import { IFormContext } from '../FormContext';
 import { FormText } from './FormText';
-
-jest.mock('../../hooks');
+import { Form } from '../Form';
 
 describe('<FormText />', () => {
-  const mockContext: IFormContext = createMockFormContext();
-  mockContext.stringFormatter = jest.fn().mockImplementation((value: string): string => value);
-
-  (useFormContext as jest.Mock).mockReturnValue(mockContext);
-
-  const setup = (text: string | null, values?: IMessageValues): ShallowWrapper =>
-    shallow(<FormText text={text} values={values} />);
-
   it('should render nothing if text is null', () => {
-    const wrapper = setup(null);
-    expect(wrapper.text()).toBe('');
+    const { getByTestId } = render(
+      <Form>
+        <div data-testid="result">
+          <FormText text={null} />
+        </div>
+      </Form>
+    );
+
+    expect(getByTestId('result')).toBeEmpty();
   });
 
-  describe('text existing', () => {
+  it('should render existing text', () => {
+    const mockStringFormatter = jest.fn().mockImplementation((value) => value);
     const mockText = 'mock-text';
     const mockValues = { foo: 'bar' };
 
-    const wrapper = setup(mockText, mockValues);
+    const { getByText } = render(
+      <Form formatString={mockStringFormatter}>
+        <FormText text={mockText} values={mockValues} />
+      </Form>
+    );
 
-    it('should call context.stringFormatter', () => {
-      expect(mockContext.stringFormatter).toHaveBeenCalledWith(mockText, mockValues);
-    });
-
-    it('should render the text', () => {
-      expect(wrapper.text()).toBe(mockText);
-    });
+    expect(mockStringFormatter).toHaveBeenCalledTimes(1);
+    expect(mockStringFormatter).toHaveBeenCalledWith(mockText, mockValues);
+    expect(getByText(mockText)).toBeVisible();
   });
 });

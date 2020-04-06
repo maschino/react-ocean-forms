@@ -1,28 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<FieldError /> should do nothing if invalid is false 1`] = `""`;
-
-exports[`<FieldError /> should render an error 1`] = `
-<Fragment>
-  <span
-    key="unitError_foo"
-  >
-    string
-  </span>
-</Fragment>
-`;
-
-exports[`<FieldError /> should render multiple errors 1`] = `
-<Fragment>
-  <span
-    key="unitError_foo"
-  >
-    string
-  </span>
-  <span
-    key="unitError_foo2"
-  >
-    string
-  </span>
-</Fragment>
+exports[`<FieldError /> should do nothing if invalid is false 1`] = `
+<DocumentFragment>
+  <form
+    class=""
+  />
+</DocumentFragment>
 `;

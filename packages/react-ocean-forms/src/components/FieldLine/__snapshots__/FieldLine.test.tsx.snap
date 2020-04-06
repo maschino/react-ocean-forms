@@ -1,87 +1,78 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<FieldLine /> should display invalid correctly 1`] = `
-<div
-  className="field-group is-invalid"
->
-  <label
-    className="text-right"
-    htmlFor="unitInput"
+<DocumentFragment>
+  <form
+    class=""
   >
-    <FormText
-      text="unitLabel"
-    />
-  </label>
-  <div
-    className="input-container"
-  >
-    <div>
-      children
+    <div
+      class="field-group is-invalid"
+    >
+      <label
+        class="text-right"
+        for="unitInput"
+      >
+        unitInput
+      </label>
+      <div
+        class="input-container"
+      >
+        mock
+      </div>
     </div>
-    <FieldError
-      error={null}
-      id="unitInput_errors"
-      invalid={true}
-    />
-  </div>
-</div>
+  </form>
+</DocumentFragment>
 `;
 
 exports[`<FieldLine /> should render without crashing 1`] = `
-<div
-  className="field-group"
->
-  <label
-    className="text-right"
-    htmlFor="unitInput"
+<DocumentFragment>
+  <form
+    class=""
   >
-    <FormText
-      text="unitLabel"
-    />
-  </label>
-  <div
-    className="input-container"
-  >
-    <div>
-      children
+    <div
+      class="field-group"
+    >
+      <label
+        class="text-right"
+        for="unitInput"
+      >
+        unitInput
+      </label>
+      <div
+        class="input-container"
+      >
+        mock
+      </div>
     </div>
-    <FieldError
-      error={null}
-      id="unitInput_errors"
-      invalid={false}
-    />
-  </div>
-</div>
+  </form>
+</DocumentFragment>
 `;
 
 exports[`<FieldLine /> should show a required marker 1`] = `
-<div
-  className="field-group is-invalid"
->
-  <label
-    className="text-right"
-    htmlFor="unitInput"
+<DocumentFragment>
+  <form
+    class=""
   >
-    <FormText
-      text="unitLabel"
-    />
-    <span
-      className="field-required"
+    <div
+      class="field-group"
     >
-       *
-    </span>
-  </label>
-  <div
-    className="input-container"
-  >
-    <div>
-      children
+      <label
+        class="text-right"
+        for="unitInput"
+      >
+        unitInput
+        <span
+          class="field-required"
+        >
+           *
+        </span>
+      </label>
+      <div
+        class="input-container"
+      >
+        mock
+      </div>
     </div>
-    <FieldError
-      error={null}
-      id="unitInput_errors"
-      invalid={true}
-    />
-  </div>
-</div>
+  </form>
+</DocumentFragment>
 `;

@@ -17,18 +17,6 @@ import { FormText } from '../FormText';
 import { IFieldLineProps } from './FieldLine.types';
 
 /**
- * Create a required *
- * @param validators Validator array
- */
-function createRequiredMarker(isRequired: boolean): React.ReactNode {
-  if (isRequired) {
-    return <span className="field-required"> *</span>;
-  }
-
-  return null;
-}
-
-/**
  * Component for displaying bootstrap
  * form groups with any children
  */
@@ -41,7 +29,7 @@ export const FieldLine: React.FC<IFieldLineProps> = (props) => {
     <div className={groupClass}>
       <label htmlFor={field.id} className="text-right">
         <FormText text={label} />
-        {createRequiredMarker(meta.isRequired)}
+        {meta.isRequired && <span className="field-required"> *</span>}
       </label>
       <div className="input-container">
         {children}

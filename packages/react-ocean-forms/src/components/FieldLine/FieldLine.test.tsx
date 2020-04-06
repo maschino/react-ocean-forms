@@ -1,9 +1,9 @@
 import React from 'react';
 
-import { shallow, ShallowWrapper } from 'enzyme';
+import { render } from '@testing-library/react';
 
 import { FieldLine } from './FieldLine';
-import { IFieldLineProps } from './FieldLine.types';
+import { Form } from '../Form';
 
 describe('<FieldLine />', () => {
   const meta = {
@@ -24,27 +24,36 @@ describe('<FieldLine />', () => {
     onBlur: jest.fn(),
   };
 
-  const setup = (props?: Partial<IFieldLineProps>): ShallowWrapper =>
-    shallow(
-      <FieldLine label="unitLabel" meta={meta} field={field} {...props}>
-        <div>children</div>
-      </FieldLine>
-    );
-
   it('should render without crashing', () => {
-    const wrapper = setup();
-    expect(wrapper).toMatchSnapshot();
+    const { asFragment } = render(
+      <Form>
+        <FieldLine label="unitInput" field={field} meta={meta}>
+          mock
+        </FieldLine>
+      </Form>
+    );
+    expect(asFragment()).toMatchSnapshot();
   });
 
   it('should display invalid correctly', () => {
-    meta.valid = false;
-    const wrapper = setup();
-    expect(wrapper).toMatchSnapshot();
+    const { asFragment } = render(
+      <Form>
+        <FieldLine label="unitInput" field={field} meta={{ ...meta, valid: false }}>
+          mock
+        </FieldLine>
+      </Form>
+    );
+    expect(asFragment()).toMatchSnapshot();
   });
 
   it('should show a required marker', () => {
-    meta.isRequired = true;
-    const wrapper = setup();
-    expect(wrapper).toMatchSnapshot();
+    const { asFragment } = render(
+      <Form>
+        <FieldLine label="unitInput" field={field} meta={{ ...meta, isRequired: true }}>
+          mock
+        </FieldLine>
+      </Form>
+    );
+    expect(asFragment()).toMatchSnapshot();
   });
 });
