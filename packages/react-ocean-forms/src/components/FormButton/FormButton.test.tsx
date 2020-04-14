@@ -1,174 +1,212 @@
 import React from 'react';
 
-import { shallow, ShallowWrapper } from 'enzyme';
-import { mockEvent } from '../../test-utils/enzymeEventUtils';
-import { createMockFormContext } from '../../test-utils/enzymeFormContext';
-import { useFormContext } from '../../hooks';
-import { IFormContext } from '../FormContext';
+import { render, fireEvent, createEvent, act } from '@testing-library/react';
 import { FormButton } from './FormButton';
-import { IFormButtonProps } from './FormButton.types';
-
-jest.mock('../../hooks');
+import { Form } from '../Form';
 
 describe('<FormButton />', () => {
-  interface ISetupArgs {
-    props?: Partial<IFormButtonProps>;
-    contextOverrides?: Partial<IFormContext>;
-  }
-
-  interface ISetupResult {
-    formContext: IFormContext;
-    wrapper: ShallowWrapper;
-    button: ShallowWrapper;
-  }
-
-  const setup = ({ props, contextOverrides }: Partial<ISetupArgs> = {}): ISetupResult => {
-    const formContext: IFormContext = {
-      ...createMockFormContext(),
-      ...contextOverrides,
-    };
-
-    (useFormContext as jest.Mock).mockReturnValue(formContext);
-
-    const wrapper = shallow(<FormButton {...props} />);
-    const button = wrapper.find('button');
-
-    return {
-      wrapper,
-      formContext,
-      button,
-    };
-  };
-
-  const simulateClick = (button: ShallowWrapper): ShallowWrapper =>
-    button.simulate('click', mockEvent());
-
-  const checkClickHandler = (args: Partial<ISetupArgs>, called: boolean): void => {
-    describe('with onClick handler', () => {
-      it(`should ${called ? '' : 'not '}call the onClick handler on click`, () => {
-        const mockHandler = jest.fn();
-        const customArgs = {
-          contextOverrides: args.contextOverrides,
-          props: {
-            ...args.props,
-            onClick: mockHandler,
-          },
-        };
-
-        const { button } = setup(customArgs);
-        simulateClick(button);
-
-        if (called) {
-          expect(mockHandler).toHaveBeenCalled();
-        } else {
-          expect(mockHandler).not.toHaveBeenCalled();
-        }
-      });
-    });
-  };
-
-  const checkFormSubmit = (args: Partial<ISetupArgs>, called: boolean): void => {
-    it(`should ${called ? '' : 'not '}call formContext.submit on click`, () => {
-      const { button, formContext } = setup(args);
-      simulateClick(button);
-
-      if (called) {
-        expect(formContext.submit).toHaveBeenCalled();
-      } else {
-        expect(formContext.submit).not.toHaveBeenCalled();
-      }
-    });
-  };
-
-  const check = (args: Partial<ISetupArgs>): void => {
-    it('the button should be disabled', () => {
-      const { button } = setup(args);
-      expect(button.prop('disabled')).toBeTruthy();
-    });
-
-    checkFormSubmit(args, false);
-    checkClickHandler(args, false);
-  };
-
   describe('render', () => {
     it('should render without crashing', () => {
-      const { wrapper } = setup();
-      expect(wrapper).toMatchSnapshot();
+      const { asFragment } = render(
+        <Form>
+          <FormButton>Mock button</FormButton>
+        </Form>
+      );
+
+      expect(asFragment()).toMatchSnapshot();
     });
 
-    describe('custom component', () => {
-      it('should render the custom component', () => {
-        const { wrapper } = setup({ props: { component: 'div' } });
-        expect(wrapper).toMatchSnapshot();
+    it('should render without crashing when using a custom component', () => {
+      const { asFragment } = render(
+        <Form>
+          <FormButton component="div">Mock button</FormButton>
+        </Form>
+      );
+
+      expect(asFragment()).toMatchSnapshot();
+    });
+  });
+
+  describe('disabled button', () => {
+    it('button should be disabled if the form is busy', async () => {
+      const mockFormSubmitHandler = jest.fn();
+      const mockClickHandler = jest.fn();
+
+      const { getByRole } = render(
+        <Form busy onSubmit={mockFormSubmitHandler}>
+          <FormButton onClick={mockClickHandler} />
+        </Form>
+      );
+
+      expect(getByRole('button')).toBeDisabled();
+
+      await act(async () => {
+        fireEvent.click(getByRole('button'));
       });
+      expect(mockFormSubmitHandler).not.toHaveBeenCalled();
+      expect(mockClickHandler).not.toHaveBeenCalled();
     });
-  });
 
-  describe('formContext is busy', () => {
-    const checkArgs: Partial<ISetupArgs> = {
-      contextOverrides: {
-        busy: true,
-      },
-    };
+    it('button should be disabled if the form is disabled', async () => {
+      const mockFormSubmitHandler = jest.fn();
+      const mockClickHandler = jest.fn();
 
-    check(checkArgs);
-  });
+      const { getByRole } = render(
+        <Form disabled onSubmit={mockFormSubmitHandler}>
+          <FormButton onClick={mockClickHandler} />
+        </Form>
+      );
 
-  describe('formContext is disabled', () => {
-    const checkArgs: Partial<ISetupArgs> = {
-      contextOverrides: {
-        disabled: true,
-      },
-    };
+      expect(getByRole('button')).toBeDisabled();
 
-    check(checkArgs);
-  });
-
-  describe('disabled prop is set', () => {
-    const checkArgs: Partial<ISetupArgs> = {
-      props: {
-        disabled: true,
-      },
-    };
-
-    check(checkArgs);
-  });
-
-  describe('button enabled', () => {
-    checkFormSubmit({}, true);
-
-    describe('with submitArgs', () => {
-      it('should pass the submitArgs to formContext.submit', () => {
-        const mockArgs = { foo: 'bar' };
-        const setupArgs: Partial<ISetupArgs> = {
-          props: {
-            submitArgs: mockArgs,
-          },
-        };
-
-        const { button, formContext } = setup(setupArgs);
-
-        simulateClick(button);
-        expect(formContext.submit).toHaveBeenCalledWith(mockArgs);
+      await act(async () => {
+        fireEvent.click(getByRole('button'));
       });
+      expect(mockFormSubmitHandler).not.toHaveBeenCalled();
+      expect(mockClickHandler).not.toHaveBeenCalled();
     });
 
-    checkClickHandler({}, true);
+    it('button should be disabled if disabled prop is true', async () => {
+      const mockFormSubmitHandler = jest.fn();
+      const mockClickHandler = jest.fn();
+
+      const { getByRole } = render(
+        <Form onSubmit={mockFormSubmitHandler}>
+          <FormButton disabled onClick={mockClickHandler} />
+        </Form>
+      );
+
+      expect(getByRole('button')).toBeDisabled();
+
+      await act(async () => {
+        fireEvent.click(getByRole('button'));
+      });
+      expect(mockFormSubmitHandler).not.toHaveBeenCalled();
+      expect(mockClickHandler).not.toHaveBeenCalled();
+    });
+
+    it('button should call event.preventDefault if it has been clicked while in disabled state', async () => {
+      const mockFormSubmitHandler = jest.fn();
+      const mockClickHandler = jest.fn();
+
+      const { getByText } = render(
+        <Form onSubmit={mockFormSubmitHandler}>
+          <FormButton disabled onClick={mockClickHandler} component="div">
+            Mock button
+          </FormButton>
+        </Form>
+      );
+
+      const mockEvent = createEvent.click(getByText('Mock button'));
+      await act(async () => {
+        fireEvent(getByText('Mock button'), mockEvent);
+      });
+      expect(mockFormSubmitHandler).not.toHaveBeenCalled();
+      expect(mockClickHandler).not.toHaveBeenCalled();
+      expect(mockEvent.defaultPrevented).toBeTruthy();
+    });
   });
 
-  describe('button type button', () => {
-    const setupArgs: Partial<ISetupArgs> = {
-      props: {
-        type: 'button',
-      },
-    };
+  describe('enabled button', () => {
+    it('button should be enabled and correctly call all callbacks', async () => {
+      const mockFormSubmitHandler = jest.fn();
+      const mockClickHandler = jest.fn();
 
-    it('should correctly set the button type', () => {
-      const { button } = setup(setupArgs);
-      expect(button.prop('type')).toBe('button');
+      const { getByRole } = render(
+        <Form onSubmit={mockFormSubmitHandler}>
+          <FormButton onClick={mockClickHandler} />
+        </Form>
+      );
+
+      expect(getByRole('button')).not.toBeDisabled();
+
+      await act(async () => {
+        fireEvent.click(getByRole('button'));
+      });
+      expect(mockFormSubmitHandler).toHaveBeenCalledTimes(1);
+      expect(mockClickHandler).toHaveBeenCalledTimes(1);
     });
 
-    checkFormSubmit(setupArgs, false);
-    checkClickHandler(setupArgs, true);
+    it('should pass the submitArgs to Form.onSubmit', async () => {
+      const mockSubmitArgs = { foo: 'bar' };
+      const mockFormSubmitHandler = jest.fn();
+      const mockClickHandler = jest.fn();
+
+      const { getByRole } = render(
+        <Form onSubmit={mockFormSubmitHandler}>
+          <FormButton onClick={mockClickHandler} submitArgs={mockSubmitArgs} />
+        </Form>
+      );
+
+      expect(getByRole('button')).not.toBeDisabled();
+
+      await act(async () => {
+        fireEvent.click(getByRole('button'));
+      });
+      expect(mockFormSubmitHandler).toHaveBeenCalledTimes(1);
+      expect(mockFormSubmitHandler).toHaveBeenCalledWith({}, mockSubmitArgs);
+      expect(mockClickHandler).toHaveBeenCalledTimes(1);
+    });
+
+    it('should not crash if no onClick handler is present', async () => {
+      const mockFormSubmitHandler = jest.fn();
+
+      const { getByRole } = render(
+        <Form onSubmit={mockFormSubmitHandler}>
+          <FormButton />
+        </Form>
+      );
+
+      expect(getByRole('button')).not.toBeDisabled();
+
+      await act(async () => {
+        fireEvent.click(getByRole('button'));
+      });
+      expect(mockFormSubmitHandler).toHaveBeenCalledTimes(1);
+    });
+  });
+
+  describe('button type parameter', () => {
+    it('should not call Form.onSubmit if the button type is not submit', async () => {
+      const mockFormSubmitHandler = jest.fn();
+      const mockClickHandler = jest.fn();
+
+      const { getByRole } = render(
+        <Form onSubmit={mockFormSubmitHandler}>
+          <FormButton onClick={mockClickHandler} type="button" />
+        </Form>
+      );
+
+      expect(getByRole('button')).not.toBeDisabled();
+      expect(getByRole('button')).toHaveAttribute('type', 'button');
+
+      await act(async () => {
+        fireEvent.click(getByRole('button'));
+      });
+      expect(mockFormSubmitHandler).not.toHaveBeenCalled();
+      expect(mockClickHandler).toHaveBeenCalledTimes(1);
+    });
+
+    it('should call Form.onReset if the button type is reset', async () => {
+      const mockFormSubmitHandler = jest.fn();
+      const mockFormResetHandler = jest.fn();
+      const mockClickHandler = jest.fn();
+
+      const { getByRole } = render(
+        <Form onSubmit={mockFormSubmitHandler} onReset={mockFormResetHandler}>
+          <FormButton onClick={mockClickHandler} type="reset" />
+        </Form>
+      );
+
+      expect(getByRole('button')).not.toBeDisabled();
+      expect(getByRole('button')).toHaveAttribute('type', 'reset');
+
+      await act(async () => {
+        fireEvent.click(getByRole('button'));
+      });
+      expect(mockFormSubmitHandler).not.toHaveBeenCalled();
+      expect(mockFormResetHandler).toHaveBeenCalledTimes(1);
+      expect(mockClickHandler).toHaveBeenCalledTimes(1);
+    });
   });
 });

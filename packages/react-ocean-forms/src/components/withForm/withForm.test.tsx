@@ -1,39 +1,34 @@
 import React from 'react';
 
-import { shallow, ShallowWrapper } from 'enzyme';
+import { render } from '@testing-library/react';
 
-import { createMockFormContext } from '../../test-utils/enzymeFormContext';
-
-import { useFormContext } from '../../hooks';
 import { withForm } from './withForm';
 import { IFormContextProps } from './withForm.types';
-
-jest.mock('../../hooks');
+import { Form } from '../Form';
 
 describe('withForm', () => {
-  const formContext = createMockFormContext();
-  (useFormContext as jest.Mock).mockReturnValue(formContext);
-
-  const TestComponent = (): JSX.Element => <div id="test-component" />;
+  const TestComponent: React.FC<IFormContextProps> = (props) => (
+    <div data-test-id="test-component">form busy: {props.context.busy ? 'true' : 'false'}</div>
+  );
   const WrappedComponent = withForm(TestComponent);
 
-  const setup = (props?: Partial<IFormContextProps>): ShallowWrapper =>
-    shallow(<WrappedComponent {...props} />);
-  const wrapper = setup();
-
   it('should render without error', () => {
-    expect(wrapper).toMatchSnapshot();
+    const { asFragment } = render(
+      <Form>
+        <WrappedComponent />
+      </Form>
+    );
+
+    expect(asFragment()).toMatchSnapshot();
   });
 
-  describe('FormContext.Provider', () => {
-    const childWrapper = wrapper.dive();
+  it('should receive the correct form context values', () => {
+    const { getByText } = render(
+      <Form busy>
+        <WrappedComponent />
+      </Form>
+    );
 
-    it('should render the children without error', () => {
-      expect(childWrapper).toMatchSnapshot();
-    });
-
-    it('should have the formContext supplied as a prop', () => {
-      expect(wrapper.prop('context')).toBe(formContext);
-    });
+    expect(getByText('form busy: true')).toBeVisible();
   });
 });

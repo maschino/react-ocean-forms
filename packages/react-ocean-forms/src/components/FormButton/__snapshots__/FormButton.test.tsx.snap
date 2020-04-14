@@ -1,17 +1,29 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<FormButton /> render custom component should render the custom component 1`] = `
-<div
-  disabled={false}
-  onClick={[Function]}
-  type="submit"
-/>
+exports[`<FormButton /> render should render without crashing 1`] = `
+<DocumentFragment>
+  <form
+    class=""
+  >
+    <button
+      type="submit"
+    >
+      Mock button
+    </button>
+  </form>
+</DocumentFragment>
 `;
 
-exports[`<FormButton /> render should render without crashing 1`] = `
-<button
-  disabled={false}
-  onClick={[Function]}
-  type="submit"
-/>
+exports[`<FormButton /> render should render without crashing when using a custom component 1`] = `
+<DocumentFragment>
+  <form
+    class=""
+  >
+    <div
+      type="submit"
+    >
+      Mock button
+    </div>
+  </form>
+</DocumentFragment>
 `;

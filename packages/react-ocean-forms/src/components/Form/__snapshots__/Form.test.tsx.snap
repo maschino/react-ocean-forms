@@ -1,37 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<Form /> should render without error 1`] = `
-<ContextProvider
-  value={
-    Object {
-      "asyncValidateOnChange": false,
-      "asyncValidationWait": 400,
-      "busy": false,
-      "defaultValues": Object {},
-      "disabled": false,
-      "fieldPrefix": null,
-      "getFieldState": [MockFunction],
-      "getValues": [MockFunction],
-      "notifyFieldEvent": [MockFunction],
-      "plaintext": false,
-      "registerField": [MockFunction],
-      "registerListener": [MockFunction],
-      "reset": [MockFunction],
-      "stringFormatter": [MockFunction],
-      "submit": [MockFunction],
-      "unregisterField": [MockFunction],
-      "unregisterListener": [MockFunction],
-    }
-  }
->
+<DocumentFragment>
   <form
-    className=""
-    onReset={[Function]}
-    onSubmit={[Function]}
+    class=""
   >
     <div>
-      unitChild
+      mock child
     </div>
   </form>
-</ContextProvider>
+</DocumentFragment>
 `;

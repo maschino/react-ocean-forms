@@ -1,7 +1,7 @@
 import { TBasicFieldValue } from '../hooks';
-import { createMockFormContext } from '../test-utils/enzymeFormContext';
 import { validators } from './validators';
 import { FieldErrorMessageId } from './validators.types';
+import { IFormContext } from '../components';
 
 describe('default validators', () => {
   describe('required validator', () => {
@@ -85,8 +85,7 @@ describe('default validators', () => {
     it.each(cases)(
       'should return %p if %p is passed',
       (output: string | undefined, input: TBasicFieldValue, length: number) => {
-        const context = createMockFormContext();
-        const result = validators.minLength(input, context, [length]);
+        const result = validators.minLength(input, {} as IFormContext, [length]);
         if (output === undefined) {
           expect(result).toBeUndefined();
         } else {
@@ -123,8 +122,7 @@ describe('default validators', () => {
     it.each(cases)(
       'should return %p if %p is passed',
       (output: string | undefined, input: TBasicFieldValue, length: number) => {
-        const context = createMockFormContext();
-        const result = validators.maxLength(input, context, [length]);
+        const result = validators.maxLength(input, {} as IFormContext, [length]);
         if (output === undefined) {
           expect(result).toBeUndefined();
         } else {
@@ -148,7 +146,7 @@ describe('default validators', () => {
       const param1 = '123';
       const param2 = 456;
       const value = 'abcd';
-      const context = createMockFormContext();
+      const context = {} as IFormContext;
 
       const func = utility(testValidator, param1, param2);
 

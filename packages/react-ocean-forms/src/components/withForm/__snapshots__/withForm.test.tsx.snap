@@ -1,33 +1,15 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`withForm FormContext.Provider should render the children without error 1`] = `
-<div
-  id="test-component"
-/>
-`;
-
 exports[`withForm should render without error 1`] = `
-<TestComponent
-  context={
-    Object {
-      "asyncValidateOnChange": false,
-      "asyncValidationWait": 400,
-      "busy": false,
-      "defaultValues": Object {},
-      "disabled": false,
-      "fieldPrefix": null,
-      "getFieldState": [MockFunction],
-      "getValues": [MockFunction],
-      "notifyFieldEvent": [MockFunction],
-      "plaintext": false,
-      "registerField": [MockFunction],
-      "registerListener": [MockFunction],
-      "reset": [MockFunction],
-      "stringFormatter": [MockFunction],
-      "submit": [MockFunction],
-      "unregisterField": [MockFunction],
-      "unregisterListener": [MockFunction],
-    }
-  }
-/>
+<DocumentFragment>
+  <form
+    class=""
+  >
+    <div
+      data-test-id="test-component"
+    >
+      form busy: false
+    </div>
+  </form>
+</DocumentFragment>
 `;
