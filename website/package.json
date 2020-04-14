@@ -16,7 +16,7 @@
     "react": "^16.8.4",
     "react-dom": "^16.8.4",
     "react-ocean-forms": "3.0.0-rc.1",
-    "react-ocean-forms-bootstrap": "4.0.0-alpha.1",
+    "react-ocean-forms-bootstrap": "5.0.0-alpha.1",
     "react-ocean-forms-react-intl": "3.0.0-rc.1"
   },
   "browserslist": {
