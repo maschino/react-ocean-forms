@@ -16,7 +16,9 @@ import { ISelectProps } from './Select.types';
  * Renders the actual `Select` component with the passed props
  */
 const renderSelect = (preparedProps: IPreparedSelectProps): JSX.Element => {
-  return <ReactSelect {...preparedProps} />;
+  const value = preparedProps && preparedProps.value ? preparedProps.value : null;
+
+  return <ReactSelect {...preparedProps} value={value} />;
 };
 
 /**

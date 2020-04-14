@@ -79,4 +79,12 @@ describe('<Select />', () => {
     // const result = shallow(i.renderSelect());
     // expect(result.find(ReactSelect).exists()).toBeTruthy();
   });
+
+  it('should render a react-select with value', () => {
+    // const { wrapper } = setup();
+    // type SelectInstance = { renderSelect(preparedProps: IPreparedSelectProps): JSX.Element };
+    // const i = ((wrapper.instance()) as unknown) as SelectInstance;
+    // const result = shallow(i.renderSelect( { value: { label: 'Test', value: 'test'}}));
+    // expect(result.find(ReactSelect).exists()).toBeTruthy();
+  });
 });

@@ -7,6 +7,11 @@ All notable changes to this project will be documented in this file.
 - Updated to `react-ocean-forms` 3.0.0
 - Added `containerClass` prop to `FieldLine` and thus to all input components
 
+## [4.0.0] # 2020-03-31
+
+- Updated to `reactstrap` 8.4.1 and `react-select` 2.4.4
+- Correctly clear internal state of `react-select`
+
 ## [3.2.1] # 2020-02-07
 
 - Fixed `FieldLine` prefix and suffix typings
